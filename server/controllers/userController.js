@@ -1,4 +1,5 @@
 const userModel = require('../models/userModel');
+const bcrypt = require('bcryptjs');
 
 const signUp = async (req, res) => {
   try {
@@ -17,14 +18,21 @@ const signUp = async (req, res) => {
 
 const logIn = async (req, res) => {
   try {
-    console.log('login attempt:', req.body);
     const response = await userModel.checkUserCredentials(req.body);
     if (response) {
-      console.log(response);
-      req.session.sid = response.userName;
-      res.sendStatus(201);
-    } else {
-      res.sendStatus(401);
+      console.log('response:', response);
+      const passwordMatch = await bcrypt.compare(
+        req.body.password,
+        response.password
+      );
+      if (passwordMatch) {
+        console.log('password match');
+        req.session.sid = response.userName;
+        res.sendStatus(200);
+      } else {
+        console.log('passwords Dont match');
+        res.sendStatus(401);
+      }
     }
   } catch (err) {
     console.log(err);

@@ -1,37 +1,51 @@
-const { ref, set, get, child } = require('firebase/database');
-const database = require('../firebase');
+const { collection, addDoc, getDocs } = require('firebase/firestore');
+const db = require('../firebase');
 const bcrypt = require('bcryptjs');
-
-const dbRef = ref(database);
 
 const addNewUser = async (user) => {
   const hashedPassword = await bcrypt.hash(user.password, 8);
   const encryptedUser = { ...user, password: hashedPassword };
-  set(ref(database, 'users/' + user.userName), encryptedUser);
+  try {
+    const docRef = await addDoc(collection(db, 'users'), encryptedUser);
+  } catch (err) {
+    console.log(err);
+  }
   return true;
 };
 
 const checkUserCredentials = async (user) => {
-  console.log(user);
-  const snapshot = await get(child(dbRef, `users/${user.userName}`));
-  if (snapshot.exists()) {
-    const dbUser = snapshot.val();
-    const passwordMatch = await bcrypt.compare(user.password, dbUser.password);
-    if (passwordMatch) {
-      console.log('passwords match');
-      return user;
+  let userInDb;
+  const querySnapshot = await getDocs(collection(db, 'users'));
+  const verifiedUser = await querySnapshot.docs.find(async (doc) => {
+    if (doc.data().userName === user.userName) {
+      userInDb = doc.data();
     }
-  } else {
-    return false;
-  }
+  });
+  return verifiedUser.data();
 };
 
-const getUsersToChatWith = async (userName) => {
-  const snapshot1 = await get(child(dbRef, `users/${userName}`));
-  if (snapshot1.exists()) {
-    const user = snapshot1.val();
-    console.log(user);
-  }
-};
+// const checkUserCredentials = async (user) => {
+//   let userInDb;
+//   const querySnapshot = await getDocs(collection(db, 'users'));
+//   querySnapshot.forEach((doc) => {
+//     if (doc.data().userName === user.userName) {
+//       userInDb = doc.data();
+//     }
+//   });
+//   if (userInDb) {
+//     const passwordMatch = await bcrypt.compare(
+//       user.password,
+//       userInDb.password
+//     );
+//   }
+// };
 
-module.exports = { addNewUser, checkUserCredentials, getUsersToChatWith };
+// const getUsersToChatWith = async (userName) => {
+//   const snapshot1 = await get(child(dbRef, `users/${userName}`));
+//   if (snapshot1.exists()) {
+//     const user = snapshot1.val();
+//     console.log(user);
+//   }
+// };
+
+module.exports = { addNewUser, checkUserCredentials };

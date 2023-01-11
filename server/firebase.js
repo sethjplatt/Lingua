@@ -1,11 +1,12 @@
+const admin = require('firebase-admin');
 const { initializeApp } = require('firebase/app');
-const { getDatabase } = require('firebase/database');
+const { getFirestore } = require('firebase/firestore');
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAawKBb5_K-gfi1khqFSUH3zIC0y_pv5hU',
   authDomain: 'lingua-d09cf.firebaseapp.com',
   databaseURL:
-    'https://lingua-d09cf-default-rtdb.europe-west1.firebasedatabase.app/',
+    'https://lingua-d09cf-default-rtdb.europe-west1.firebasedatabase.app',
   projectId: 'lingua-d09cf',
   storageBucket: 'lingua-d09cf.appspot.com',
   messagingSenderId: '447618465388',
@@ -14,6 +15,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const database = getDatabase(app);
+const db = getFirestore(app);
 
-module.exports = database;
+module.exports = db;
