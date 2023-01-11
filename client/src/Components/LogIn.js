@@ -1,7 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
-// import bcrypt from 'bcryptjs';
-// import Cookies from 'js-cookie';
 import { logInService } from '../Utils/UserService';
 // import { UserContext } from '../Context/UserContext';
 import './Forms.css';
@@ -13,20 +11,15 @@ export default function LogIn() {
   async function handleSubmit(event) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // const password = data.get('password');
-    // const hashedPassword = bcrypt.hashSync(password);
     let user = {
-      email: data.get('email'),
+      userName: data.get('userName'),
       // password: hashedPassword,
       password: data.get('password'),
     };
-    const verified = await logInService(user);
-    // if (verified) {
-    //   Cookies.set('token', verified.token, { expires: 7 });
-    //   console.log('verified', verified);
-    //   setActiveUser(verified.user);
-    //   navigate('/dashboard');
-    // }
+    const userIsVerified = await logInService(user);
+    if (userIsVerified) {
+      navigate('/chats');
+    }
   }
 
   function handleOtherClick() {
@@ -40,7 +33,7 @@ export default function LogIn() {
         <form className='form' onSubmit={handleSubmit}>
           <label>
             <p>Username</p>
-            <input type='text' name='email' autoComplete='email' />
+            <input type='text' name='userName' autoComplete='email' />
           </label>
           <label>
             <p>Password</p>
