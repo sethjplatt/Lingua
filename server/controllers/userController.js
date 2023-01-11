@@ -33,8 +33,8 @@ const logIn = async (req, res) => {
 
 const getUsersToChatWith = async (req, res) => {
   try {
-    console.log('session params:', req.session);
     const userName = req.session.sid;
+    console.log('userName aka req.session.sid:', userName);
     const response = await userModel.getUsersToChatWith(userName);
   } catch (err) {
     console.log(err);
