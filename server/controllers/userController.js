@@ -1,9 +1,12 @@
-const userModel = require('../models/userModel');
+const userModels = require('../models/userModels');
 const bcrypt = require('bcryptjs');
 
 const signUp = async (req, res) => {
   try {
-    const response = await userModel.addNewUser(req.body);
+    const hashedPassword = await bcrypt.hash(req.body.password, 8);
+    const hashedUser = { ...req.body, password: hashedPassword };
+    console.log(hashedUser);
+    const response = await userModels.signUp(hashedUser);
     if (response) {
       req.session.sid = req.body.userName;
       console.log(req.session);
@@ -18,19 +21,21 @@ const signUp = async (req, res) => {
 
 const logIn = async (req, res) => {
   try {
-    const response = await userModel.checkUserCredentials(req.body);
+    const response = await userModels.logIn(req.body);
+    console.log('req.body', req.body);
+    console.log('response from model', response);
+
     if (response) {
-      console.log('response:', response);
       const passwordMatch = await bcrypt.compare(
         req.body.password,
         response.password
       );
       if (passwordMatch) {
-        console.log('password match');
         req.session.sid = response.userName;
+        console.log('passwords match in controller');
         res.sendStatus(200);
       } else {
-        console.log('passwords Dont match');
+        console.log('no match in controller');
         res.sendStatus(401);
       }
     }
@@ -42,8 +47,10 @@ const logIn = async (req, res) => {
 const getUsersToChatWith = async (req, res) => {
   try {
     const userName = req.session.sid;
-    console.log('userName aka req.session.sid:', userName);
-    const response = await userModel.getUsersToChatWith(userName);
+    console.log('userName aka req.session.sid in controller:', userName);
+    const response = await userModels.getUsersToChatWith(userName);
+    console.log('response in controller:', response);
+    res.status(200).send(response);
   } catch (err) {
     console.log(err);
   }
