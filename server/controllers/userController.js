@@ -5,14 +5,21 @@ const signUp = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 8);
     const hashedUser = { ...req.body, password: hashedPassword };
-    console.log(hashedUser);
+    // console.log(hashedUser);
     const response = await userModels.signUp(hashedUser);
     if (response) {
       req.session.sid = req.body.userName;
-      console.log(req.session);
-      res.sendStatus(201);
-    } else {
-      res.sendStatus(401);
+      const { firstName, lastName, userName, nativeLanguage, learnLanguage } =
+        response;
+      const cleanResponse = {
+        firstName,
+        lastName,
+        userName,
+        nativeLanguage,
+        learnLanguage,
+      };
+      // console.log('cleanResponse:', cleanResponse);
+      res.status(201).send(cleanResponse);
     }
   } catch (err) {
     console.log(err);
@@ -22,8 +29,6 @@ const signUp = async (req, res) => {
 const logIn = async (req, res) => {
   try {
     const response = await userModels.logIn(req.body);
-    console.log('req.body', req.body);
-    console.log('response from model', response);
 
     if (response) {
       const passwordMatch = await bcrypt.compare(
@@ -32,7 +37,6 @@ const logIn = async (req, res) => {
       );
       if (passwordMatch) {
         req.session.sid = response.userName;
-        console.log('passwords match in controller');
         res.sendStatus(200);
       } else {
         console.log('no match in controller');
@@ -44,16 +48,37 @@ const logIn = async (req, res) => {
   }
 };
 
+const cleanResponse = (user) => {
+  const { userName, learnLanguage, nativeLanguage } = user;
+  const cleanUser = {
+    userName,
+    learnLanguage,
+    nativeLanguage,
+  };
+  return cleanUser;
+};
+
+const getActiveUser = async (req, res) => {
+  try {
+    const userName = req.session.sid;
+    const response = await userModels.getActiveUser(userName);
+    const cleanUser = cleanResponse(response);
+    res.status(200).send(cleanUser);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const getUsersToChatWith = async (req, res) => {
   try {
     const userName = req.session.sid;
-    console.log('userName aka req.session.sid in controller:', userName);
+    // console.log('userName aka req.session.sid in controller:', userName);
     const response = await userModels.getUsersToChatWith(userName);
-    console.log('response in controller:', response);
+    // console.log('response in controller:', response);
     res.status(200).send(response);
   } catch (err) {
     console.log(err);
   }
 };
 
-module.exports = { signUp, logIn, getUsersToChatWith };
+module.exports = { signUp, logIn, getUsersToChatWith, getActiveUser };

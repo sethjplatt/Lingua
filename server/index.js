@@ -21,6 +21,24 @@ app.use(
 app.use(router);
 
 const port = process.env.PORT || 3001;
-app.listen(port, () => {
+
+const server = require('http').Server(app);
+const io = require('socket.io')(server, { cors: corsConfig });
+
+server.listen(port, () => {
   console.log(`Server listening on port ${port}`);
+});
+
+io.on('connection', (socket) => {
+  socket.on('join', (roomData) => {
+    // console.log('a user joined:', roomData);
+  });
+  socket.on('message', (data) => {
+    // console.log('data object:', data);
+    io.to(data.room).emit('message', data);
+  });
+
+  socket.on('disconnect', () => {
+    // console.log('A user disconnected');
+  });
 });

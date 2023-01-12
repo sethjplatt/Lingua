@@ -11,9 +11,14 @@ async function logIn(attempt) {
   return user;
 }
 
+async function getActiveUser(userName) {
+  const activeUser = await db.findOne({ userName: userName });
+  return activeUser;
+}
+
 async function getUsersToChatWith(userName) {
   const userMakingRequest = await db.findOne({ userName: userName });
-  console.log('userMakingRequest in model:', userMakingRequest);
+  // console.log('userMakingRequest in model:', userMakingRequest);
   if (userMakingRequest) {
     const compatibleUsers = await db
       .find(
@@ -24,9 +29,9 @@ async function getUsersToChatWith(userName) {
         { projection: { _id: 0, password: 0 } }
       )
       .toArray();
-    console.log('compatibleuser:', compatibleUsers);
+    // console.log('compatibleuser:', compatibleUsers);
     return compatibleUsers;
   }
 }
 
-module.exports = { signUp, logIn, getUsersToChatWith };
+module.exports = { signUp, logIn, getUsersToChatWith, getActiveUser };

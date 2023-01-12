@@ -1,11 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { logInService } from '../Utils/UserService';
-// import { UserContext } from '../Context/UserContext';
 import './Forms.css';
 
 export default function LogIn() {
-  // const [activeUser, setActiveUser] = useContext(UserContext);
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
@@ -16,8 +14,8 @@ export default function LogIn() {
       // password: hashedPassword,
       password: data.get('password'),
     };
-    const userIsVerified = await logInService(user);
-    if (userIsVerified) {
+    const verifiedUser = await logInService(user);
+    if (verifiedUser.ok) {
       navigate('/chats');
     }
   }

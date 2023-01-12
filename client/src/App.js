@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import SignUp from './Components/SignUp';
 import LogIn from './Components/LogIn';
 import Dashboard from './Components/Dashboard';
 import ChatsPage from './Components/ChatsPage';
 import ConnectPage from './Components/ConnectPage';
 import { fetchUser } from './Utils/UserService';
-// import { UserContext } from './Context/UserContext';
+import ChatRoom from './Components/ChatRoom/ChatRoom';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/chats' element={<ChatsPage />} />
         <Route path='/connect' element={<ConnectPage />} />
+        <Route path='/chat/:roomId/:activeUserName' element={<ChatRoom />} />
       </Routes>
     </BrowserRouter>
   );

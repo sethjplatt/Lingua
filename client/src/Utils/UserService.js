@@ -8,8 +8,9 @@ export const signUpService = async (user) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user),
   });
-  console.log('response in signUpService', response);
-  return response.ok;
+  const json = await response.json();
+  console.log('response in signUpService', json);
+  return json;
 };
 
 export const logInService = async (user) => {
@@ -19,18 +20,18 @@ export const logInService = async (user) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user),
   });
-  console.log('response in logInService:', response);
-  return response.ok;
+
+  return response;
 };
 
-export const setProfileInfo = async (user) => {
-  const response = await fetch(apiUrl + '/profileinfo', {
-    method: 'POST',
+export const getActiveUser = async () => {
+  const activeUser = await fetch(apiUrl + '/activeuser', {
+    method: 'GET',
     credentials: 'include',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(user),
   });
-  return response;
+  const jsonActiveUser = await activeUser.json();
+  console.log('activeUser in userservice', jsonActiveUser);
+  return jsonActiveUser;
 };
 
 export const getUsersToChatWith = async () => {
@@ -40,3 +41,13 @@ export const getUsersToChatWith = async () => {
   });
   return response;
 };
+
+// export const setProfileInfo = async (user) => {
+//   const response = await fetch(apiUrl + '/profileinfo', {
+//     method: 'POST',
+//     credentials: 'include',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(user),
+//   });
+//   return response;
+// };

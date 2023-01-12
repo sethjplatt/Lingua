@@ -57,7 +57,7 @@ export default function SignUp() {
   return (
     <div className='form-screen'>
       {sucessfullyCreated ? (
-        <h1>Account Created! Redirecting to Log In</h1>
+        <h1>Account Created! Redirecting to Your Experience</h1>
       ) : (
         <div className='form-wrapper'>
           <h1>Sign Up for a Free Account</h1>
