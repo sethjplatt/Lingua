@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signUpService } from '../Utils/UserService';
+import { signUpService } from '../../Utils/UserService';
 
 // import './Forms.css';
 
-export default function SignUp() {
+export default function SignUpForm() {
   // const [signUpData, setSignUpData] = useState({});
   const [valid, setValid] = useState(null);
   const [sucessfullyCreated, setSucessfullyCreated] = useState(null);

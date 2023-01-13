@@ -1,9 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
-import { logInService } from '../Utils/UserService';
-import './Forms.css';
+import { logInService } from '../../Utils/UserService';
+import '../SignUpForm/Forms.css';
 
-export default function LogIn() {
+export default function LogInForm() {
   const navigate = useNavigate();
 
   async function handleSubmit(event) {

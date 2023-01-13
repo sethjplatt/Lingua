@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getActiveUser } from '../Utils/UserService';
+import { getActiveUser } from '../../Utils/UserService';
 
 export default function ChatsPage() {
   const navigate = useNavigate();

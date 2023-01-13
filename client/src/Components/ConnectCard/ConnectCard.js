@@ -14,12 +14,13 @@ export default function ConnectCard({ otherUser, activeUser }) {
 
   return (
     <div className='connect-card' key={otherUser.userName}>
-      <h2>{otherUser.userName}</h2>
-      <h4>
+      <div className='user-name'>{otherUser.userName}</div>
+      <div className='connect-info'>
         speaks {otherUser.nativeLanguage} and is learning{' '}
         {otherUser.learnLanguage}
-      </h4>
+      </div>
       <button
+        className='start-chat'
         value={otherUser}
         onClick={() => handleStartAChatClick(otherUser)}
       >

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getActiveUser, getUsersToChatWith } from '../Utils/UserService';
-import ConnectCard from './ConnectCard/ConnectCard';
+import { getActiveUser, getUsersToChatWith } from '../../Utils/UserService';
+import ConnectCard from '../ConnectCard/ConnectCard';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function ConnectPage() {
