@@ -34,5 +34,6 @@
 }
 
 .translation {
-  background-color: aqua;
+  background-color: rgb(125, 181, 237);
+  padding: 5px;
 }

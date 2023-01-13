@@ -1,0 +1,30 @@
+import { useNavigate } from 'react-router-dom';
+
+export default function ConnectCard({ otherUser, activeUser }) {
+  const navigate = useNavigate();
+
+  function handleStartAChatClick(otherUser) {
+    console.log('otherUser to chat with:', otherUser);
+    const sortedRoomId = [otherUser.userName, activeUser.userName]
+      .sort()
+      .join('');
+    console.log('sortedRoomId', sortedRoomId);
+    navigate(`/chat/${sortedRoomId}/${activeUser.userName}`);
+  }
+
+  return (
+    <div className='connect-card' key={otherUser.userName}>
+      <h2>{otherUser.userName}</h2>
+      <h4>
+        speaks {otherUser.nativeLanguage} and is learning{' '}
+        {otherUser.learnLanguage}
+      </h4>
+      <button
+        value={otherUser}
+        onClick={() => handleStartAChatClick(otherUser)}
+      >
+        Start A Chat
+      </button>
+    </div>
+  );
+}
