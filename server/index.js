@@ -30,15 +30,18 @@ server.listen(port, () => {
 });
 
 io.on('connection', (socket) => {
-  socket.on('join', (roomData) => {
-    // console.log('a user joined:', roomData);
+  console.log('A user connected');
+
+  socket.on('join', (room) => {
+    console.log('a user joined:', room);
+    socket.join(room.room);
   });
   socket.on('message', (data) => {
-    // console.log('data object:', data);
+    console.log('data object:', data);
     io.to(data.room).emit('message', data);
   });
 
   socket.on('disconnect', () => {
-    // console.log('A user disconnected');
+    console.log('A user disconnected');
   });
 });

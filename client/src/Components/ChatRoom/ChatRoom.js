@@ -14,12 +14,14 @@ export default function ChatRoom() {
 
   useEffect(() => {
     socket.on('connect', () => {
-      socket.emit('join', { roomId, activeUserName, otherUser });
+      socket.emit('join', { room: roomId, activeUserName, otherUser });
     });
+
     joinRoom({ roomId, activeUserName, otherUser });
   }, []);
 
   socket.on('message', (data) => {
+    console.log('message heard from socket', data);
     setMessages((prevMessages) => [...prevMessages, data]);
   });
 
@@ -51,8 +53,8 @@ export default function ChatRoom() {
       text: inputText,
       timestamp: formattedDate,
     };
-    console.log('message object:', data);
     socket.emit('message', data);
+
     saveMessageToDb(data);
   }
 

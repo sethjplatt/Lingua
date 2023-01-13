@@ -10,7 +10,6 @@ export const joinRoom = async (roomData) => {
   });
   if (response.status == 200) {
     const json = await response.json();
-    console.log(json);
   }
 };
 
