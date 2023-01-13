@@ -4,7 +4,7 @@ const joinRoom = async (req, res) => {
   try {
     const modelResponse = await roomModels.joinRoom(req.body);
     if (modelResponse) {
-      res.status(200).send(modelResponse);
+      res.status(200).send(modelResponse.messages);
     } else {
       res.sendStatus(201);
     }

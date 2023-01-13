@@ -4,7 +4,7 @@ const db = client.db('test').collection('rooms');
 async function joinRoom(roomData) {
   // console.log('room data:', roomData);
   const dbResponse = await db.findOne({ roomId: roomData.roomId });
-  // console.log('dbResponse:', dbResponse);
+  console.log('dbResponse:', dbResponse);
   if (!dbResponse) {
     const created = await db.insertOne({ ...roomData, messages: [] });
     // console.log('created:', created);

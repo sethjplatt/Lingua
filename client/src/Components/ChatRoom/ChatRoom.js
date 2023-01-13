@@ -16,9 +16,23 @@ export default function ChatRoom() {
     socket.on('connect', () => {
       socket.emit('join', { room: roomId, activeUserName, otherUser });
     });
-
-    joinRoom({ roomId, activeUserName, otherUser });
+    const getMessageHistory = async () => {
+      let messageHistory = await joinRoom({
+        roomId,
+        activeUserName,
+        otherUser,
+      });
+      console.log('messageHistory', messageHistory);
+      if (messageHistory) {
+        setMessages((prevMessages) => [...prevMessages, ...messageHistory]);
+      }
+    };
+    getMessageHistory();
   }, []);
+
+  useEffect(() => {
+    console.log('messages state:', messages);
+  }, [messages]);
 
   socket.on('message', (data) => {
     console.log('message heard from socket', data);
@@ -64,7 +78,11 @@ export default function ChatRoom() {
       <div className='messages-container'>
         {messages.map((message) => {
           return (
-            <div class='message me'>
+            <div
+              className={
+                message.author == activeUserName ? 'message me' : 'message them'
+              }
+            >
               <div class='message-text'>{message.text}</div>
               <div class='message-time'>{message.timestamp}</div>
             </div>
