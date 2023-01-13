@@ -6,12 +6,14 @@ import ChatsPage from './Components/ChatsPage/ChatsPage';
 import ConnectPage from './Components/ConnectPage/ConnectPage';
 import { fetchUser } from './Utils/UserService';
 import ChatRoom from './Components/ChatRoom/ChatRoom';
+import LandingPage from './Components/LandingPage/LandingPage';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<SignUpForm />} />
+        <Route path='/landing' element={<LandingPage />} />
         <Route path='/login' element={<LogInForm />} />
         <Route path='/chats' element={<ChatsPage />} />
         <Route path='/connect' element={<ConnectPage />} />

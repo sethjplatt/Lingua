@@ -1,0 +1,41 @@
+#landing-image {
+  width: 800px;
+  position: absolute;
+  bottom: 0px;
+  z-index: 1;
+}
+
+#left {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+}
+
+.slogan {
+  margin-top: 80px;
+  align-self: center;
+  z-index: 10;
+  font-size: 55px;
+  font-weight: 900;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 350px;
+}
+
+#landing-chat {
+  color: #283d3b;
+}
+
+#landing-connect {
+  color: #197278;
+  padding-left: 60px;
+}
+
+#landing-learn {
+  color: #283d3b;
+  padding-left: 170px;
+}
+
+#landing-header {
+  background-color: #772e25;
+  height: 40px;
+}

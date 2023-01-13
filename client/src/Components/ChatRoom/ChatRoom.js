@@ -89,12 +89,6 @@ export default function ChatRoom() {
     saveMessageToDb(data);
   }
 
-  // async function handleTranslate(text) {
-  //   const translation = await translate(text, activeUser.nativeLanguage);
-  //   console.log('translation:', translation);
-  //   setTranslation(translation);
-  // }
-
   return (
     <div className='container'>
       <div id='header'>

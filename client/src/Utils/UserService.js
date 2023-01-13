@@ -1,8 +1,8 @@
-const apiUrl = 'http://localhost:3001';
+const serverUrl = 'http://localhost:3001';
 
 export const signUpService = async (user) => {
   console.log('in signUpService Client, user:', user);
-  const response = await fetch(apiUrl + '/signup', {
+  const response = await fetch(serverUrl + '/signup', {
     method: 'POST',
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
@@ -14,7 +14,7 @@ export const signUpService = async (user) => {
 };
 
 export const logInService = async (user) => {
-  const response = await fetch(apiUrl + '/login', {
+  const response = await fetch(serverUrl + '/login', {
     method: 'POST',
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
@@ -25,7 +25,7 @@ export const logInService = async (user) => {
 };
 
 export const getActiveUser = async () => {
-  const activeUser = await fetch(apiUrl + '/activeuser', {
+  const activeUser = await fetch(serverUrl + '/activeuser', {
     method: 'GET',
     credentials: 'include',
   });
@@ -35,19 +35,9 @@ export const getActiveUser = async () => {
 };
 
 export const getUsersToChatWith = async () => {
-  const response = await fetch(apiUrl + '/connect', {
+  const response = await fetch(serverUrl + '/connect', {
     method: 'GET',
     credentials: 'include',
   });
   return response;
 };
-
-// export const setProfileInfo = async (user) => {
-//   const response = await fetch(apiUrl + '/profileinfo', {
-//     method: 'POST',
-//     credentials: 'include',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(user),
-//   });
-//   return response;
-// };

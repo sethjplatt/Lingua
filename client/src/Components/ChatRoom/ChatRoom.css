@@ -41,41 +41,6 @@ body {
   display: none;
 }
 
-.message {
-  max-width: 60%;
-  color: rgb(0, 0, 0);
-  margin-bottom: 10px;
-  padding: 8px;
-  border-radius: 10px;
-  box-sizing: border-box;
-  clear: both;
-  overflow-wrap: break-word;
-}
-
-.them {
-  background: #dbebff;
-  width: fit-content;
-}
-
-.me {
-  background: #a2cae6;
-  align-self: flex-end;
-}
-
-.message-time {
-  color: rgb(150, 150, 150);
-  padding-top: 5px;
-  font-size: 0.7rem;
-}
-
-.me .message-text {
-  text-align: left;
-}
-
-.me .message-time {
-  float: right;
-}
-
 .input-container {
   max-height: 60%;
   /* display: flex; */

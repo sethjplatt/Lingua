@@ -1,7 +1,7 @@
-const apiUrl = 'http://localhost:3001';
+const serverUrl = 'http://localhost:3001';
 
 export const joinRoom = async (roomData) => {
-  const response = await fetch(`http://localhost:3001/rooms`, {
+  const response = await fetch(`${serverUrl}/rooms`, {
     method: 'POST',
     body: JSON.stringify(roomData),
     headers: {
@@ -18,7 +18,7 @@ export const joinRoom = async (roomData) => {
 };
 
 export const saveMessageToDb = async (messageData) => {
-  const response = await fetch(`http://localhost:3001/messages`, {
+  fetch(`${serverUrl}/messages`, {
     method: 'POST',
     body: JSON.stringify(messageData),
     headers: {

@@ -2,17 +2,10 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signUpService } from '../../Utils/UserService';
 
-// import './Forms.css';
-
 export default function SignUpForm() {
-  // const [signUpData, setSignUpData] = useState({});
   const [valid, setValid] = useState(null);
   const [sucessfullyCreated, setSucessfullyCreated] = useState(null);
   const navigate = useNavigate();
-
-  // function handleChange(event) {
-  //   setSignUpData({ ...signUpData, [event.target.name]: event.target.value });
-  // }
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -30,9 +23,7 @@ export default function SignUpForm() {
     } else {
       setValid(true);
     }
-    const url = 'https://localhost:3001/signup';
-    // const password = data.get('password');
-    // const hashedPassword = bcrypt.hashSync(password);
+
     let user = {
       firstName: data.get('firstName'),
       lastName: data.get('lastName'),
@@ -43,10 +34,7 @@ export default function SignUpForm() {
     };
     const response = signUpService(user);
     if (response) {
-      setSucessfullyCreated(true);
-      setTimeout(() => {
-        navigate('/chats');
-      }, 1500);
+      navigate('/chats');
     }
   }
 
