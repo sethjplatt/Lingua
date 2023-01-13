@@ -12,6 +12,7 @@ router.get('/activeuser', userController.getActiveUser);
 router.post('/rooms', roomController.joinRoom);
 router.post('/messages', roomController.saveMessage);
 
-router.get('/translate', translateController.translateText);
+router.post('/translate', translateController.translateText);
+router.post('/detect', translateController.detectLanguage);
 
 module.exports = router;

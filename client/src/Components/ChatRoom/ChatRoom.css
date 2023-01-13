@@ -5,17 +5,21 @@ body {
 
 #header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: #90a0b0;
   height: 50px;
   padding: 0px 10px;
+  align-items: center;
+  justify-content: center;
 }
 
-#chatname {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+#translation-banner {
+  margin-top: 5px;
+  padding: 10px;
+  min-height: 100px;
+  width: 300px;
+  align-self: center;
+  border-radius: 10px;
+  background-color: #a2cae6;
 }
 
 .container {
