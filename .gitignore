@@ -2,3 +2,4 @@ server/node_modules
 client/node_modules
 lingua-374610-d182b642c725.json
 server/.env
+client/.env

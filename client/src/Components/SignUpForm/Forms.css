@@ -9,9 +9,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: lightgray;
+  background-color: #f6f2e9;
   width: 400px;
   height: 600px;
+  z-index: 1;
 }
 
 .form {

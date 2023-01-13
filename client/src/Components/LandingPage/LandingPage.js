@@ -1,4 +1,4 @@
-// import landingImage from './../../images/LandingImages/80809.jpg';
+import SignUpForm from '../SignUpForm/SignUpForm';
 import './LandingPage.css';
 export default function LandingPage() {
   return (
@@ -12,7 +12,9 @@ export default function LandingPage() {
         </div>
         <img id='landing-image' src='/80809.jpg'></img>
       </div>
-      <div id='form'></div>
+      <div id='form'>
+        <SignUpForm />
+      </div>
     </div>
     // <a href='http://www.freepik.com'>Designed by rawpixel.com / Freepik</a>
   );
