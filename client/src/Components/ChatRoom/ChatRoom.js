@@ -2,6 +2,7 @@ import io from 'socket.io-client';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { joinRoom, saveMessageToDb } from '../../Utils/ChatService';
+import { v4 as uuidv4 } from 'uuid';
 import('./ChatRoom.css');
 
 export default function ChatRoom() {
@@ -82,9 +83,10 @@ export default function ChatRoom() {
               className={
                 message.author == activeUserName ? 'message me' : 'message them'
               }
+              key={uuidv4()}
             >
-              <div class='message-text'>{message.text}</div>
-              <div class='message-time'>{message.timestamp}</div>
+              <div className='message-text'>{message.text}</div>
+              <div className='message-time'>{message.timestamp}</div>
             </div>
           );
         })}
