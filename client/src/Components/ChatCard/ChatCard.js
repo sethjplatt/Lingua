@@ -27,7 +27,7 @@ export default function ChatCard({ chat }) {
   if (chat.messages) {
     return (
       <div className='chat-card'>
-        <div className='chat-card-name'>{otherUser}</div>
+        <div className='card-name'>{otherUser}</div>
         <div className='chat-card-last-chat'>
           {chat.messages[chat.messages.length - 1].text}
         </div>

@@ -20,7 +20,7 @@ export default function ConnectCard({ otherUser, activeUser }) {
 
   return (
     <div className='connect-card' key={otherUser.userName}>
-      <div className='connect-item connect-user-name'>{otherUser.userName}</div>
+      <div className='connect-item card-name'>{otherUser.userName}</div>
       <div className='connect-item connect-info'>
         speaks {otherUser.nativeLanguage} and is learning{' '}
         {otherUser.learnLanguage}

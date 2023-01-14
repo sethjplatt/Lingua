@@ -1,7 +1,11 @@
-.dashboard-container {
+.dash-items-container {
   display: flex;
   height: 97vh;
   gap: 40px;
-  padding: 20px 40px 0px;
+  padding: 80px 50px 0px;
   background-color: rgb(196, 69, 54, 0.7);
+}
+
+.profile-and-chats-container {
+  border: 2px solid gray;
 }

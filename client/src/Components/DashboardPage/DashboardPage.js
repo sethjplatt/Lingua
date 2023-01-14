@@ -2,6 +2,7 @@ import { getActiveUser, getCompatibleUsers } from '../../Utils/UserService';
 import { getMyChats } from '../../Utils/ChatService';
 import { useEffect, useState } from 'react';
 import { UserContext } from '../../Context/UserContext';
+import Profile from '../Profile/Profile';
 import Chats from '../Chats/Chats';
 import Connect from '../Connect/Connect';
 import './DashboardPage.css';
@@ -27,9 +28,12 @@ export default function DashboardPage() {
 
   return (
     <UserContext.Provider value={{ activeUser, myChats, compatibleUsers }}>
-      <div className='dashboard-container'>
-        <div id='chats' className='component'>
-          <Chats />
+      <div className='dash-items-container'>
+        <div className='profile-and-chats-container'>
+          <Profile />
+          <div id='chats' className='component'>
+            <Chats />
+          </div>
         </div>
         <div id='connect' className='component'>
           <Connect />
