@@ -30,7 +30,6 @@ export const getActiveUser = async () => {
     credentials: 'include',
   });
   const jsonActiveUser = await activeUser.json();
-  console.log('activeUser in userservice', jsonActiveUser);
   return jsonActiveUser;
 };
 
@@ -41,7 +40,6 @@ export const getMyChats = async (userName) => {
   });
   if (myChats.status === 200) {
     const jsonMyChats = await myChats.json();
-    console.log('active chats UserService:', jsonMyChats);
     return jsonMyChats;
   } else {
     return null;
@@ -49,10 +47,14 @@ export const getMyChats = async (userName) => {
 };
 
 export const getCompatibleUsers = async () => {
-  const response = await fetch(serverUrl + '/connect', {
+  const compatibleUsers = await fetch(serverUrl + '/connect', {
     method: 'GET',
     credentials: 'include',
   });
-  console.log('getCompatibleUsers', response);
-  return response;
+  if (compatibleUsers) {
+    const jsonCompatibleUsers = await compatibleUsers.json();
+    return jsonCompatibleUsers;
+  } else {
+    return null;
+  }
 };

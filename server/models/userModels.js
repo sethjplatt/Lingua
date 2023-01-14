@@ -21,7 +21,6 @@ async function getActiveUser(userName) {
 
 async function getCompatibleUsers(userName) {
   const userMakingRequest = await db.findOne({ userName: userName });
-  // console.log('userMakingRequest in model:', userMakingRequest);
   if (userMakingRequest) {
     const compatibleUsers = await db
       .find(
@@ -33,7 +32,11 @@ async function getCompatibleUsers(userName) {
       )
       .toArray();
     // console.log('compatibleuser:', compatibleUsers);
-    return compatibleUsers;
+    if (compatibleUsers) {
+      return compatibleUsers;
+    } else {
+      return null;
+    }
   }
 }
 

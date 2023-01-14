@@ -72,7 +72,11 @@ const getCompatibleUsers = async (req, res) => {
   try {
     const userName = req.session.sid;
     const response = await userModels.getCompatibleUsers(userName);
-    res.status(200).send(response);
+    if (response) {
+      res.status(200).send(response);
+    } else {
+      res.sendStatus(204);
+    }
   } catch (err) {
     console.log(err);
   }
