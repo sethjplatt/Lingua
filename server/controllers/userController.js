@@ -5,7 +5,6 @@ const signUp = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 8);
     const hashedUser = { ...req.body, password: hashedPassword };
-    // console.log(hashedUser);
     const response = await userModels.signUp(hashedUser);
     if (response) {
       req.session.sid = req.body.userName;
@@ -18,7 +17,6 @@ const signUp = async (req, res) => {
         nativeLanguage,
         learnLanguage,
       };
-      // console.log('cleanResponse:', cleanResponse);
       res.status(201).send(cleanResponse);
     }
   } catch (err) {
@@ -39,7 +37,6 @@ const logIn = async (req, res) => {
         req.session.sid = response.userName;
         res.sendStatus(200);
       } else {
-        console.log('no match in controller');
         res.sendStatus(401);
       }
     }
@@ -87,7 +84,9 @@ const updateMyChats = async (req, res) => {
     const { roomId } = req.body;
     const userName = req.session.sid;
     const done = await userModels.updateMyChats(userName, roomId);
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 module.exports = {

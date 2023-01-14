@@ -32,7 +32,6 @@ async function getCompatibleUsers(userName) {
         { projection: { _id: 0, password: 0 } }
       )
       .toArray();
-    // console.log('compatibleuser:', compatibleUsers);
     if (compatibleUsers) {
       return compatibleUsers;
     } else {
