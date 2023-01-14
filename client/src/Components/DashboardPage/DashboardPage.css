@@ -3,5 +3,7 @@
   height: 97vh;
   gap: 40px;
   padding: 20px 40px 0px;
-  background-color: #f6f2e9;
+  background-color: rgb(196, 69, 54, 0.7);
+  border: 5px solid gainsboro;
+  /* #f6f2e9; */
 }

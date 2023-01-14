@@ -14,8 +14,10 @@ export default function Chats() {
 
   return (
     <div className='chats-component'>
-      <div>Here are your open chats!</div>
-      <div>{myChatCards}</div>
+      <div id='chats-component-body'>
+        <div className='component-header'>My Chats</div>
+        <div>{myChatCards}</div>
+      </div>
     </div>
   );
 }

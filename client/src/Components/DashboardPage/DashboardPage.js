@@ -31,10 +31,10 @@ export default function DashboardPage() {
   return (
     <UserContext.Provider value={{ activeUser, myChats, compatibleUsers }}>
       <div className='dashboard-container'>
-        <div id='chats-component'>
+        <div id='chats' className='component'>
           <Chats />
         </div>
-        <div id='connect-component'>
+        <div id='connect' className='component'>
           <Connect />
         </div>
       </div>

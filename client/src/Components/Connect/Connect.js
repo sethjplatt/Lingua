@@ -29,8 +29,8 @@ export default function Connect() {
 
   return (
     <>
-      <div id='connect-header'>
-        Here are some other users from around the world you can chat with!
+      <div className='component-header'>
+        Connect with Users Around the World!
       </div>
       <div id='connect-wrapper'>{otherUserCards}</div>
     </>
