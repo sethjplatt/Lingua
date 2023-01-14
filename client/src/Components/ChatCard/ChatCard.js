@@ -1,6 +1,7 @@
 import { UserContext } from '../../Context/UserContext';
 import { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { updateMyChatsList } from '../../Utils/UserService';
 import './ChatCard.css';
 
 export default function ChatCard({ chat }) {
@@ -22,6 +23,7 @@ export default function ChatCard({ chat }) {
     console.log('otherUser to chat with:', otherUser);
     const sortedRoomId = [otherUser, activeUser.userName].sort().join('');
     console.log('sortedRoomId', sortedRoomId);
+    updateMyChatsList(sortedRoomId);
     navigate(`/chat/${sortedRoomId}/${activeUser.userName}`);
   }
 

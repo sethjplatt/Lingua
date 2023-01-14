@@ -2,6 +2,7 @@ const client = require('./index');
 const db = client.db('test').collection('users');
 
 async function signUp(user) {
+  user.myRooms = [];
   const res = await db.insertOne(user);
   return res;
 }
@@ -40,4 +41,11 @@ async function getCompatibleUsers(userName) {
   }
 }
 
+async function updateMyChats(userName, roomId) {
+  const dbResponse = await db.updateOne(
+    { userName: userName },
+    { $push: { myRooms: roomId } }
+  );
+  console.log(dbResponse);
+}
 module.exports = { signUp, logIn, getCompatibleUsers, getActiveUser };

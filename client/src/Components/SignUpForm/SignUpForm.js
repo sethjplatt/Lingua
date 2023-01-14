@@ -35,7 +35,7 @@ export default function SignUpForm() {
     };
     const response = signUpService(user);
     if (response) {
-      navigate('/chats');
+      navigate('/dashboard');
     }
   }
 

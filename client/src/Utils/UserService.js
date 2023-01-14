@@ -45,3 +45,12 @@ export const getCompatibleUsers = async () => {
     return null;
   }
 };
+
+export const updateMyChatsList = async (roomId) => {
+  await fetch(serverUrl + '/updatemychats', {
+    method: 'POST',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(roomId),
+  });
+};
