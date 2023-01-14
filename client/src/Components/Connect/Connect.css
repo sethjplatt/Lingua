@@ -1,5 +1,6 @@
 .component {
-  background-color: #f6f2e9;
+  /* background: rgba(196, 69, 54, 0.8); */
+  background: rgba(237, 221, 212, 0.8);
   height: auto;
   padding: 30px;
   border: 2px solid rgb(219, 219, 219);
@@ -19,6 +20,6 @@
 .component-header {
   font-size: 40px;
   font-weight: 800;
-  color: #283d3b;
+  color: rgba(40, 61, 59, 0.8);
   letter-spacing: 1px;
 }

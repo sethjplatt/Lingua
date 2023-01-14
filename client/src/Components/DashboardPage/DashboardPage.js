@@ -28,7 +28,13 @@ export default function DashboardPage() {
 
   return (
     <UserContext.Provider value={{ activeUser, myChats, compatibleUsers }}>
-      <div className='dash-items-container'>
+      <div className='dash-header'>Header</div>
+      <div
+        className='dash-items-container'
+        style={{
+          backgroundImage: `url(/landmarks-short.jpg)`,
+        }}
+      >
         <div className='profile-and-chats-container'>
           <Profile />
           <div id='chats' className='component'>

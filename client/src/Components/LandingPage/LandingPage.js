@@ -19,7 +19,7 @@ export default function LandingPage() {
               <div id='landing-connect'>Connect</div>
               <div id='landing-learn'>Learn</div>
             </div>
-            <img id='landing-image' src='/80809.jpg'></img>
+            <img id='landing-image' src='/landmarks-short.jpg'></img>
           </div>
           <div id='form'>
             {signUpOrLogin == 'signUp' ? <SignUpForm /> : <LogInForm />}
