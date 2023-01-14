@@ -15,15 +15,6 @@ export default function Connect() {
         activeUser={activeUser}
         key={uuidv4()}
       />
-      // <div key={user.userName}>
-      //   <h2>{user.userName}</h2>
-      //   <h4>
-      //     speaks {user.nativeLanguage} and is learning {user.learnLanguage}
-      //   </h4>
-      //   <button value={user} onClick={() => handleStartAChatClick(user)}>
-      //     Start A Chat
-      //   </button>
-      // </div>
     );
   });
 

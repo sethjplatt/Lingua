@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+
 import './ConnectCard.css';
 
 export default function ConnectCard({ otherUser, activeUser }) {
+  // const { activeUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   function handleStartAChatClick(otherUser) {
