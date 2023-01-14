@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getActiveUser, getUsersToChatWith } from '../../Utils/UserService';
+import { getActiveUser, getCompatibleUsers } from '../../Utils/UserService';
 import ConnectCard from '../ConnectCard/ConnectCard';
 import { v4 as uuidv4 } from 'uuid';
 
-export default function ConnectPage() {
+export default function Connect() {
   const [activeUser, setActiveUser] = useState({});
   const [compatibleUsers, setCompatibleUsers] = useState([]);
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ export default function ConnectPage() {
     const fetchData = async () => {
       const user = await getActiveUser();
       setActiveUser(user);
-      const otherUsers = await getUsersToChatWith();
+      const otherUsers = await getCompatibleUsers();
       const jsonOtherUsers = await otherUsers.json();
       console.log('otherUsers in Connect Page client:', jsonOtherUsers);
       setCompatibleUsers(jsonOtherUsers);

@@ -1,6 +1,6 @@
 import SignUpForm from '../SignUpForm/SignUpForm';
 import LogInForm from '../LogInForm/LogInForm';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { LandingContext } from '../../Context/LandingContext';
 
 import './LandingPage.css';

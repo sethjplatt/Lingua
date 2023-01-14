@@ -21,4 +21,18 @@ const saveMessage = async (req, res) => {
   }
 };
 
-module.exports = { joinRoom, saveMessage };
+const getMyChats = async (req, res) => {
+  try {
+    const userName = req.session.sid;
+    const modelResponse = await roomModels.getMyChats(userName);
+    if (modelResponse) {
+      res.status(200).send(modelResponse);
+    } else {
+      res.sendStatus(204);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = { joinRoom, saveMessage, getMyChats };

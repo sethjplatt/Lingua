@@ -51,9 +51,9 @@ const logIn = async (req, res) => {
 const cleanResponse = (user) => {
   const { userName, learnLanguage, nativeLanguage } = user;
   const cleanUser = {
-    userName,
-    learnLanguage,
-    nativeLanguage,
+    ...user,
+    _id: null,
+    password: null,
   };
   return cleanUser;
 };
@@ -62,23 +62,20 @@ const getActiveUser = async (req, res) => {
   try {
     const userName = req.session.sid;
     const response = await userModels.getActiveUser(userName);
-    const cleanUser = cleanResponse(response);
-    res.status(200).send(cleanUser);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const getUsersToChatWith = async (req, res) => {
-  try {
-    const userName = req.session.sid;
-    // console.log('userName aka req.session.sid in controller:', userName);
-    const response = await userModels.getUsersToChatWith(userName);
-    // console.log('response in controller:', response);
     res.status(200).send(response);
   } catch (err) {
     console.log(err);
   }
 };
 
-module.exports = { signUp, logIn, getUsersToChatWith, getActiveUser };
+const getCompatibleUsers = async (req, res) => {
+  try {
+    const userName = req.session.sid;
+    const response = await userModels.getCompatibleUsers(userName);
+    res.status(200).send(response);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = { signUp, logIn, getCompatibleUsers, getActiveUser };

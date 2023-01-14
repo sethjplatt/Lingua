@@ -6,9 +6,10 @@ const translateController = require('./controllers/translateController');
 
 router.post('/signup', userController.signUp);
 router.post('/login', userController.logIn);
-router.get('/connect', userController.getUsersToChatWith);
+router.get('/connect', userController.getCompatibleUsers);
 router.get('/activeuser', userController.getActiveUser);
 
+router.get('/mychats', roomController.getMyChats);
 router.post('/rooms', roomController.joinRoom);
 router.post('/messages', roomController.saveMessage);
 

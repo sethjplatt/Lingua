@@ -34,10 +34,25 @@ export const getActiveUser = async () => {
   return jsonActiveUser;
 };
 
-export const getUsersToChatWith = async () => {
+export const getMyChats = async (userName) => {
+  const myChats = await fetch(serverUrl + '/mychats', {
+    method: 'GET',
+    credentials: 'include',
+  });
+  if (myChats.status === 200) {
+    const jsonMyChats = await myChats.json();
+    console.log('active chats UserService:', jsonMyChats);
+    return jsonMyChats;
+  } else {
+    return null;
+  }
+};
+
+export const getCompatibleUsers = async () => {
   const response = await fetch(serverUrl + '/connect', {
     method: 'GET',
     credentials: 'include',
   });
+  console.log('getCompatibleUsers', response);
   return response;
 };

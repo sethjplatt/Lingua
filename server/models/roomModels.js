@@ -34,4 +34,15 @@ async function saveMessage(messageData) {
   );
 }
 
-module.exports = { joinRoom, saveMessage };
+async function getMyChats(userName) {
+  console.log('userName in getMyChats Model:', userName);
+  const dbResponse = await db
+    .find({
+      $or: [{ activeUserName: userName }, { otherUser: userName }],
+    })
+    .toArray();
+  console.log('getMyChats Model dbResponse:', dbResponse);
+  return dbResponse;
+}
+
+module.exports = { joinRoom, saveMessage, getMyChats };

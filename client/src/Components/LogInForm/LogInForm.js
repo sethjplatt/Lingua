@@ -18,7 +18,7 @@ export default function LogInForm() {
     };
     const verifiedUser = await logInService(user);
     if (verifiedUser.ok) {
-      navigate('/chats');
+      navigate('/dashboard');
     }
   }
 
