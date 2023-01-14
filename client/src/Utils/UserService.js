@@ -33,19 +33,6 @@ export const getActiveUser = async () => {
   return jsonActiveUser;
 };
 
-export const getMyChats = async (userName) => {
-  const myChats = await fetch(serverUrl + '/mychats', {
-    method: 'GET',
-    credentials: 'include',
-  });
-  if (myChats.status === 200) {
-    const jsonMyChats = await myChats.json();
-    return jsonMyChats;
-  } else {
-    return null;
-  }
-};
-
 export const getCompatibleUsers = async () => {
   const compatibleUsers = await fetch(serverUrl + '/connect', {
     method: 'GET',

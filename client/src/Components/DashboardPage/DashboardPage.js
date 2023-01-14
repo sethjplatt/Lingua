@@ -1,8 +1,5 @@
-import {
-  getMyChats,
-  getActiveUser,
-  getCompatibleUsers,
-} from '../../Utils/UserService';
+import { getActiveUser, getCompatibleUsers } from '../../Utils/UserService';
+import { getMyChats } from '../../Utils/ChatService';
 import { useEffect, useState } from 'react';
 import { UserContext } from '../../Context/UserContext';
 import Chats from '../Chats/Chats';

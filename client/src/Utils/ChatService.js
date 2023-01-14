@@ -17,6 +17,19 @@ export const joinRoom = async (roomData) => {
   }
 };
 
+export const getMyChats = async (userName) => {
+  const myChats = await fetch(serverUrl + '/mychats', {
+    method: 'GET',
+    credentials: 'include',
+  });
+  if (myChats.status === 200) {
+    const jsonMyChats = await myChats.json();
+    return jsonMyChats;
+  } else {
+    return null;
+  }
+};
+
 export const saveMessageToDb = async (messageData) => {
   fetch(`${serverUrl}/messages`, {
     method: 'POST',
