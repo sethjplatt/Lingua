@@ -1,0 +1,12 @@
+#connect-component {
+  background-color: rgb(196, 69, 54, 0.7);
+  padding: 30px;
+  width: 600px;
+  height: auto;
+  border: 2px solid rgb(219, 219, 219);
+}
+
+#connect-wrapper {
+  height: 80vh;
+  overflow-y: scroll;
+}

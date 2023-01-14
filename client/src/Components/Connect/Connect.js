@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import { UserContext } from '../../Context/UserContext';
 import ConnectCard from '../ConnectCard/ConnectCard';
+import './Connect.css';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function Connect() {
@@ -28,10 +29,10 @@ export default function Connect() {
 
   return (
     <>
-      <div>
+      <div id='connect-header'>
         Here are some other users from around the world you can chat with!
       </div>
-      {otherUserCards}
+      <div id='connect-wrapper'>{otherUserCards}</div>
     </>
   );
 }

@@ -1,5 +1,7 @@
 .dashboard-container {
   display: flex;
-  justify-content: space-between;
+  height: 97vh;
+  gap: 40px;
+  padding: 20px 40px 0px;
   background-color: #f6f2e9;
 }
