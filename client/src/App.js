@@ -12,9 +12,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<SignUpForm />} />
-        <Route path='/landing' element={<LandingPage />} />
-        <Route path='/login' element={<LogInForm />} />
+        <Route path='/' element={<LandingPage />} />
         <Route path='/chats' element={<ChatsPage />} />
         <Route path='/connect' element={<ConnectPage />} />
         <Route path='/chat/:roomId/:activeUserName' element={<ChatRoom />} />

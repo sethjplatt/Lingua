@@ -1,9 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
+import { LandingContext } from '../../Context/LandingContext';
 import { logInService } from '../../Utils/UserService';
 import '../SignUpForm/Forms.css';
 
 export default function LogInForm() {
+  const { signUpOrLogin, setSignUpOrLogin } = useContext(LandingContext);
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
@@ -21,7 +23,7 @@ export default function LogInForm() {
   }
 
   function handleOtherClick() {
-    navigate('/');
+    setSignUpOrLogin('signUp');
   }
 
   return (
