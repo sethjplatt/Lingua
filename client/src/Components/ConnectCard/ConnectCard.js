@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import './ConnectCard.css';
 
 export default function ConnectCard({ otherUser, activeUser }) {
   const navigate = useNavigate();
@@ -14,13 +15,13 @@ export default function ConnectCard({ otherUser, activeUser }) {
 
   return (
     <div className='connect-card' key={otherUser.userName}>
-      <div className='user-name'>{otherUser.userName}</div>
-      <div className='connect-info'>
+      <div className='connect-item connect-user-name'>{otherUser.userName}</div>
+      <div className='connect-item connect-info'>
         speaks {otherUser.nativeLanguage} and is learning{' '}
         {otherUser.learnLanguage}
       </div>
       <button
-        className='start-chat'
+        className='connect-item start-chat'
         value={otherUser}
         onClick={() => handleStartAChatClick(otherUser)}
       >

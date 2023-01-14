@@ -15,7 +15,6 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/dashboard' element={<DashboardPage />} />
-        <Route path='/chats' element={<Chats />} />
         <Route path='/chat/:roomId/:activeUserName' element={<ChatRoom />} />
       </Routes>
     </BrowserRouter>

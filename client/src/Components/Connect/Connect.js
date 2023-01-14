@@ -1,36 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { getActiveUser, getCompatibleUsers } from '../../Utils/UserService';
+import { useEffect, useState, useContext } from 'react';
+import { UserContext } from '../../Context/UserContext';
 import ConnectCard from '../ConnectCard/ConnectCard';
 import { v4 as uuidv4 } from 'uuid';
 
 export default function Connect() {
-  const [activeUser, setActiveUser] = useState({});
-  const [compatibleUsers, setCompatibleUsers] = useState([]);
-  const navigate = useNavigate();
-
-  // function handleStartAChatClick(otherUser) {
-  //   console.log('user to chat with:', otherUser);
-  //   const sortedRoomId = [otherUser.userName, activeUser.userName]
-  //     .sort()
-  //     .join('');
-  //   console.log('sortedRoomId', sortedRoomId);
-  //   navigate(`/chat/${sortedRoomId}/${activeUser.userName}`);
-  // }
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const user = await getActiveUser();
-      setActiveUser(user);
-      const otherUsers = await getCompatibleUsers();
-      const jsonOtherUsers = await otherUsers.json();
-      console.log('otherUsers in Connect Page client:', jsonOtherUsers);
-      setCompatibleUsers(jsonOtherUsers);
-    };
-    fetchData();
-  }, []);
+  const { activeUser, compatibleUsers, myChats } = useContext(UserContext);
 
   const otherUserCards = compatibleUsers.map((otherUser) => {
+    console.log('otherUser', otherUser);
     return (
       <ConnectCard
         otherUser={otherUser}
@@ -55,7 +32,6 @@ export default function Connect() {
         Here are some other users from around the world you can chat with!
       </div>
       {otherUserCards}
-      <button onClick={() => navigate('/chats')}>view all of my chats</button>
     </>
   );
 }

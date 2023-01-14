@@ -3,6 +3,8 @@ import { getMyChats } from '../../Utils/ChatService';
 import { useEffect, useState } from 'react';
 import { UserContext } from '../../Context/UserContext';
 import Chats from '../Chats/Chats';
+import Connect from '../Connect/Connect';
+import './DashboardPage.css';
 
 export default function DashboardPage() {
   const [activeUser, setActiveUser] = useState({});
@@ -28,12 +30,14 @@ export default function DashboardPage() {
 
   return (
     <UserContext.Provider value={{ activeUser, myChats, compatibleUsers }}>
-      <>
+      <div className='dashboard-container'>
         <div id='chats-component'>
           <Chats />
         </div>
-        <div id='connect-component'></div>
-      </>
+        <div id='connect-component'>
+          <Connect />
+        </div>
+      </div>
     </UserContext.Provider>
   );
 }
