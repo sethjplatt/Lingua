@@ -16,16 +16,11 @@ export default function ChatRoom() {
   const [activeUser, setActiveUser] = useState({});
   const [translation, setTranslation] = useState('');
 
-  useEffect(() => {
-    console.log('translation in useEffect:', translation);
-  }, [translation]);
-
   const socket = io('http://localhost:3001');
 
   useEffect(() => {
     const fetchActiveUser = async () => {
       const user = await getActiveUser();
-      console.log('user in chat room use effect:', user);
       setActiveUser(user);
     };
     fetchActiveUser();
@@ -39,7 +34,6 @@ export default function ChatRoom() {
         activeUserName,
         otherUser,
       });
-      console.log('messageHistory', messageHistory);
       if (messageHistory) {
         setMessages((prevMessages) => [...prevMessages, ...messageHistory]);
       }
@@ -47,12 +41,7 @@ export default function ChatRoom() {
     getMessageHistory();
   }, []);
 
-  useEffect(() => {
-    console.log('messages state:', messages);
-  }, [messages]);
-
   socket.on('message', (data) => {
-    console.log('message heard from socket', data);
     setMessages((prevMessages) => [...prevMessages, data]);
   });
 
@@ -102,31 +91,6 @@ export default function ChatRoom() {
           return (
             <Message message={message} activeUser={activeUser} key={uuidv4()} />
           );
-          // const messageLanguage = await detectLanguage(message.text);
-          // messages.doISpeakIt = messageLanguage === activeUser.learnLanguage
-          // return (
-          //   <div
-          //     className={
-          //       message.author == activeUserName ? 'message me' : 'message them'
-          //     }
-          //     key={uuidv4()}
-          //   >
-          //     <div className='message-text'>{message.text}</div>
-          //     <div className='message-time'>{message.timestamp}</div>
-          //     {!message.doISpeakIt
-          //      ? (
-          //     <button
-          //       onClick={() => {
-          //         handleTranslate(message.text);
-          //       }}
-          //     >
-          //       Translate
-          //     </button>
-          //     ) : null
-          //     }
-
-          //   </div>
-          // );
         })}
       </div>
       <div className='input-container'>

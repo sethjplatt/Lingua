@@ -40,11 +40,24 @@ async function getCompatibleUsers(userName) {
   }
 }
 
-async function updateMyChats(userName, roomId) {
+async function updateChats(user, roomId) {
+  console.log('in userModel updateChats, user, roomId:', user, roomId);
+  const secondUser = roomId.replace(user, '');
+  console.log('secondUser', secondUser);
   const dbResponse = await db.updateOne(
-    { userName: userName },
+    { userName: user },
+    { $push: { myRooms: roomId } }
+  );
+  const dbResponse2 = await db.updateOne(
+    { userName: secondUser },
     { $push: { myRooms: roomId } }
   );
   console.log(dbResponse);
 }
-module.exports = { signUp, logIn, getCompatibleUsers, getActiveUser };
+module.exports = {
+  signUp,
+  logIn,
+  getCompatibleUsers,
+  getActiveUser,
+  updateChats,
+};

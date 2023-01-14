@@ -79,11 +79,12 @@ const getCompatibleUsers = async (req, res) => {
   }
 };
 
-const updateMyChats = async (req, res) => {
+const updateChats = async (req, res) => {
   try {
-    const { roomId } = req.body;
-    const userName = req.session.sid;
-    const done = await userModels.updateMyChats(userName, roomId);
+    const roomId = req.body.sortedRoomId;
+    console.log('roomId controller', roomId);
+    const user = req.session.sid;
+    const done = await userModels.updateChats(user, roomId);
   } catch (err) {
     console.log(err);
   }
@@ -94,5 +95,5 @@ module.exports = {
   logIn,
   getCompatibleUsers,
   getActiveUser,
-  updateMyChats,
+  updateChats,
 };

@@ -1,7 +1,6 @@
 const serverUrl = 'http://localhost:3001';
 
 export const signUpService = async (user) => {
-  console.log('in signUpService Client, user:', user);
   const response = await fetch(serverUrl + '/signup', {
     method: 'POST',
     credentials: 'include',
@@ -9,7 +8,6 @@ export const signUpService = async (user) => {
     body: JSON.stringify(user),
   });
   const json = await response.json();
-  console.log('response in signUpService', json);
   return json;
 };
 
@@ -46,11 +44,12 @@ export const getCompatibleUsers = async () => {
   }
 };
 
-export const updateMyChatsList = async (roomId) => {
-  await fetch(serverUrl + '/updatemychats', {
+export const updateChatsList = async (updateData) => {
+  console.log('updateData in userService:', updateData);
+  await fetch(serverUrl + '/updatechats', {
     method: 'POST',
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(roomId),
+    body: JSON.stringify(updateData),
   });
 };

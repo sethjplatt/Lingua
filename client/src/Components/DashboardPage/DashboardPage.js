@@ -14,15 +14,12 @@ export default function DashboardPage() {
   useEffect(() => {
     const fetchData = async () => {
       const user = await getActiveUser();
-      console.log('user in dashboard fetch:', user);
       setActiveUser(user);
 
       const compatibles = await getCompatibleUsers();
-      console.log('compatibles in dashboard fetch:', compatibles);
       setCompatibleUsers(compatibles);
 
       const chats = await getMyChats(user.userName);
-      console.log('chats in dashboard fetch:', chats);
       setMyChats(chats);
     };
     fetchData();

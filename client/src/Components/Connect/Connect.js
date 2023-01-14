@@ -8,7 +8,6 @@ export default function Connect() {
   const { activeUser, compatibleUsers, myChats } = useContext(UserContext);
 
   const otherUserCards = compatibleUsers.map((otherUser) => {
-    console.log('otherUser', otherUser);
     return (
       <ConnectCard
         otherUser={otherUser}

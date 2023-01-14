@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-
+import { updateChatsList } from '../../Utils/UserService';
 import './ConnectCard.css';
 
 export default function ConnectCard({ otherUser, activeUser }) {
@@ -11,6 +11,9 @@ export default function ConnectCard({ otherUser, activeUser }) {
     const sortedRoomId = [otherUser.userName, activeUser.userName]
       .sort()
       .join('');
+    const updateData = { otherUser, sortedRoomId };
+    console.log('updateData in Connect Card click:', updateData);
+    updateChatsList(updateData);
     console.log('sortedRoomId', sortedRoomId);
     navigate(`/chat/${sortedRoomId}/${activeUser.userName}`);
   }
