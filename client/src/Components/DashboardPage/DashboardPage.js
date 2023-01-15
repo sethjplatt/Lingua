@@ -18,7 +18,18 @@ export default function DashboardPage() {
       setActiveUser(user);
 
       const compatibles = await getCompatibleUsers();
-      setCompatibleUsers(compatibles);
+      const newCompatibles = [];
+      compatibles.forEach((user) => {
+        myChats.forEach((chat) => {
+          if (
+            chat.activeUserName !== user.userName &&
+            chat.otherUser !== user.userName
+          ) {
+            newCompatibles.push(user);
+          }
+        });
+      });
+      setCompatibleUsers(newCompatibles);
 
       const chats = await getMyChats(user.userName);
       setMyChats(chats);
