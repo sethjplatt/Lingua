@@ -65,12 +65,14 @@ export default function ChatRoom() {
     );
   }
 
-  function sendMessage() {
+  function sendMessage(event) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
     const formattedDate = formatDate(new Date());
     const data = {
       room: roomId,
       author: activeUserName,
-      text: inputText,
+      text: formData.get('text'),
       timestamp: formattedDate,
     };
     socket.emit('message', data);
@@ -93,26 +95,22 @@ export default function ChatRoom() {
           );
         })}
       </div>
-      <div className='input-container'>
-        <div className='input'>
-          <input
-            id='message-input'
-            type='text'
-            className='input-box'
-            placeholder='Message'
-            onChange={(event) => {
-              setInputText(event.target.value);
-            }}
-          />
-          <input
-            id='send-button'
-            className='button'
-            type='button'
-            value='Send'
-            onClick={sendMessage}
-          />
+      <form className='form' onSubmit={sendMessage}>
+        <div className='input-container'>
+          <div className='input'>
+            <input
+              id='message-input'
+              type='text'
+              name='text'
+              className='input-box'
+              placeholder='Message'
+            />
+          </div>
         </div>
-      </div>
+        <button className='submit' type='submit'>
+          Submit
+        </button>
+      </form>
     </div>
   );
 }

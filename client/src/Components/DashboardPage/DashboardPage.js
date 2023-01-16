@@ -13,7 +13,6 @@ export default function DashboardPage() {
   const [compatibleUsers, setCompatibleUsers] = useState([]);
 
   useEffect(() => {
-    console.log('hello');
     const fetchData = async () => {
       const user = await getActiveUser();
       setActiveUser(user);
@@ -23,7 +22,6 @@ export default function DashboardPage() {
 
       const compatibles = await getCompatibleUsers();
 
-      console.log();
       const newCompatibles = [];
       if (!chats.length) {
         setCompatibleUsers(compatibles);

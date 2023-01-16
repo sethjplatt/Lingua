@@ -23,6 +23,5 @@ export const translate = async (text, target) => {
   });
   const jsonResponse = await response.json();
   const translation = jsonResponse.translation;
-  console.log('translate response in translate service:', translation);
   return translation;
 };

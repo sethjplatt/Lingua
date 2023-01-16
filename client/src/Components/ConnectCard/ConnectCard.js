@@ -12,7 +12,6 @@ export default function ConnectCard({ otherUser, activeUser }) {
   useEffect(() => {
     const fetch = async () => {
       let completeUser = await getUserByUserName(otherUser);
-      console.log('complete user in connect card useEffect', completeUser);
       setUser(completeUser);
     };
     fetch();
@@ -27,7 +26,6 @@ export default function ConnectCard({ otherUser, activeUser }) {
       const filtered = prev.filter((user) => {
         return user.userName !== otherUser.userName;
       });
-      console.log('filtered', filtered);
       return filtered;
     });
 
@@ -35,12 +33,8 @@ export default function ConnectCard({ otherUser, activeUser }) {
   }
 
   function randomIntFromInterval(min, max) {
-    // min and max included
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
-
-  const rndInt = randomIntFromInterval(150, 230);
-  console.log(rndInt);
 
   return (
     <div
