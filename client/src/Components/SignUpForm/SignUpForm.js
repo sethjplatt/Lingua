@@ -46,7 +46,7 @@ export default function SignUpForm() {
   return (
     <div>
       <div className='form-wrapper'>
-        <h1>Create a Free Account</h1>
+        <div className='form-title'>Create a Free Account</div>
         <form className='form' onSubmit={handleSubmit}>
           <input
             className='form-input'

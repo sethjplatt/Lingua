@@ -3,12 +3,35 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background: rgba(237, 221, 212, 0.8);
   height: 88vh;
   width: 400px;
   z-index: 10;
   box-sizing: border-box;
+  color: #283d3b;
+}
+
+.form-content {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  padding-left: 15px;
+  background-color: hsl(27, 32%, 82%);
+  border-radius: 30px;
+}
+
+.form-title {
+  font-size: 30px;
+  font-weight: 800;
+  padding: 15px 0px;
+}
+
+.form-label {
+  font-size: 17px;
+  font-weight: 650;
 }
 
 .form {
@@ -33,6 +56,8 @@
 .other-form {
   display: flex;
   margin-bottom: 20px;
+  align-items: center;
+  gap: 10px;
 }
 
 .notValid {
@@ -44,4 +69,14 @@
   flex-direction: column;
   height: 150px;
   justify-content: space-around;
+}
+
+button {
+  background-color: rgba(119, 46, 37, 0.9);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 550;
 }

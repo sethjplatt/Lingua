@@ -27,9 +27,9 @@ export default function LogInForm() {
   }
 
   return (
-    <div className='form-screen'>
-      <div className='form-wrapper'>
-        <h1>Please Log In</h1>
+    <div className='form-wrapper'>
+      <div className='form-content'>
+        <div className='form-title'>Log In</div>
         <form className='login-form' onSubmit={handleSubmit}>
           <input
             className='form-input'
@@ -45,9 +45,9 @@ export default function LogInForm() {
             name='password'
             autoComplete='current-password'
           />
-          <div>
+          <div className='form-submit'>
             <button className='submit' type='submit'>
-              Submit
+              Log In
             </button>
           </div>
         </form>
