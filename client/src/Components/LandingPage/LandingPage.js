@@ -11,7 +11,7 @@ export default function LandingPage() {
   return (
     <LandingContext.Provider value={{ signUpOrLogin, setSignUpOrLogin }}>
       <div id='landing-wrapper'>
-        <div id='landing-header'>Header</div>
+        <div className='header'>Lingua</div>
         <div id='landing-body'>
           <div id='left'>
             <div className='slogan'>

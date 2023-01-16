@@ -10,11 +10,14 @@
 
 #connect {
   width: 600px;
+  height: 70vh;
 }
 
 #connect-wrapper {
-  height: 80vh;
-  overflow-y: scroll;
+  height: 55vh;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .component-header {

@@ -17,7 +17,6 @@
     "express-session": "^1.17.3",
     "http": "^0.0.1-security",
     "mongodb": "^4.13.0",
-    "mongoose-data-seed": "^2.1.6",
     "socket.io": "^4.5.4"
   }
 }

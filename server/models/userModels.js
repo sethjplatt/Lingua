@@ -40,9 +40,15 @@ async function getCompatibleUsers(userName) {
   }
 }
 
+async function getUserByUserName(userName) {
+  const user = await db.findOne({ userName: userName });
+  return user;
+}
+
 module.exports = {
   signUp,
   logIn,
   getCompatibleUsers,
   getActiveUser,
+  getUserByUserName,
 };

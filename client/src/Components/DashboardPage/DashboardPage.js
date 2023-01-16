@@ -70,11 +70,11 @@ export default function DashboardPage() {
     <UserContext.Provider
       value={{ activeUser, myChats, compatibleUsers, setCompatibleUsers }}
     >
-      <div className='dash-header'>Header</div>
+      <div className='header'>Lingua</div>
       <div
         className='dash-items-container'
         style={{
-          backgroundImage: `url(/landmarks-short.jpg)`,
+          backgroundImage: `url(/landmarks-dash.jpg)`,
         }}
       >
         <div className='profile-and-chats-container'>

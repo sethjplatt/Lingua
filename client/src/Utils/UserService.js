@@ -44,12 +44,13 @@ export const getCompatibleUsers = async () => {
   }
 };
 
-export const updateChatsList = async (updateData) => {
-  console.log('updateData in userService:', updateData);
-  await fetch(serverUrl + '/updatechats', {
+export const getUserByUserName = async (userName) => {
+  const user = await fetch(serverUrl + '/userbyusername', {
     method: 'POST',
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(updateData),
+    body: JSON.stringify(userName),
   });
+  const jsonUser = await user.json();
+  return jsonUser;
 };

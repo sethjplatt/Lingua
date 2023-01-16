@@ -13,10 +13,17 @@ export default function Profile() {
 
   return (
     <div className='profile-container'>
-      <div className='card-name'>{activeUser.userName}</div>
+      <div className='card-name'>
+        {activeUser.firstName + ' ' + activeUser.lastName}
+      </div>
       <div className='language-container'>
-        <div className='profile-native'>{activeUser.nativeLanguage}</div>
-        <div className='profile-learn'>{activeUser.learnLanguage}</div>
+        <div className='profile-language'>
+          {activeUser.nativeLanguage?.toUpperCase()} ->{' '}
+          {activeUser.learnLanguage?.toUpperCase()}
+        </div>
+        <div className='profile-age'>{activeUser.info?.age}</div>
+        <div className='profile-country'>{activeUser.info?.country}</div>
+        <div className='profile-bio'>{activeUser.info?.bio}</div>
       </div>
       <button onClick={handleClick}>edit</button>
     </div>

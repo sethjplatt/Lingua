@@ -9,6 +9,7 @@
 .profile-and-chats-container {
   border: 3px solid rgba(237, 221, 212, 0.6);
   border-radius: 10px;
+  height: 76vh;
 }
 
 .dash-header {
