@@ -7,10 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 export default function Connect() {
   const { activeUser, compatibleUsers, myChats } = useContext(UserContext);
 
-  console.log('connect component myChats', myChats);
-
   const otherUserCards = compatibleUsers.map((otherUser) => {
-    console.log('connect component otherUser map:', otherUser);
     return (
       <ConnectCard
         otherUser={otherUser}

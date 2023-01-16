@@ -1,20 +1,28 @@
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../Context/UserContext';
+import { useContext } from 'react';
 import { updateChatsList } from '../../Utils/UserService';
 import './ConnectCard.css';
 
 export default function ConnectCard({ otherUser, activeUser }) {
-  // const { activeUser } = useContext(UserContext);
+  const { setCompatibleUsers } = useContext(UserContext);
   const navigate = useNavigate();
 
   function handleStartAChatClick(otherUser) {
-    console.log('otherUser to chat with:', otherUser);
     const sortedRoomId = [otherUser.userName, activeUser.userName]
       .sort()
       .join('');
     const updateData = { otherUser, sortedRoomId };
-    console.log('updateData in Connect Card click:', updateData);
     updateChatsList(updateData);
-    console.log('sortedRoomId', sortedRoomId);
+
+    setCompatibleUsers((prev) => {
+      const filtered = prev.filter((user) => {
+        return user.userName !== otherUser.userName;
+      });
+      console.log('filtered', filtered);
+      return filtered;
+    });
+
     navigate(`/chat/${sortedRoomId}/${activeUser.userName}`);
   }
 

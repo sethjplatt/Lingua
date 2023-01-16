@@ -13,32 +13,63 @@ export default function DashboardPage() {
   const [compatibleUsers, setCompatibleUsers] = useState([]);
 
   useEffect(() => {
+    console.log('hello');
     const fetchData = async () => {
       const user = await getActiveUser();
       setActiveUser(user);
 
+      const chats = await getMyChats(user.userName);
+      setMyChats(chats);
+
       const compatibles = await getCompatibleUsers();
+
+      console.log();
       const newCompatibles = [];
-      compatibles.forEach((user) => {
-        myChats.forEach((chat) => {
+      if (!chats.length) {
+        setCompatibleUsers(compatibles);
+      } else {
+        compatibles.forEach((user) => {
+          for (let i = 0; i < chats.length; i++) {
+            if (
+              user.userName === chats[i].activeUserName ||
+              user.userName === chats[i].otherUser
+            ) {
+              break;
+            }
+            if (!chats[i + 1]) {
+              newCompatibles.push(user);
+            }
+          }
+        });
+        setCompatibleUsers(newCompatibles);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const chatsCopy = myChats.slice(0);
+    const compatiblesCopy = compatibleUsers.slice(0);
+    const newCompatibles = [];
+    if (myChats.length) {
+      compatiblesCopy.forEach((user) => {
+        chatsCopy.forEach((chat) => {
           if (
-            chat.activeUserName !== user.userName &&
-            chat.otherUser !== user.userName
+            user.userName !== chat.activeUserName &&
+            user.userName !== chat.otherUser
           ) {
             newCompatibles.push(user);
           }
         });
       });
       setCompatibleUsers(newCompatibles);
-
-      const chats = await getMyChats(user.userName);
-      setMyChats(chats);
-    };
-    fetchData();
-  }, []);
+    }
+  }, [myChats.length]);
 
   return (
-    <UserContext.Provider value={{ activeUser, myChats, compatibleUsers }}>
+    <UserContext.Provider
+      value={{ activeUser, myChats, compatibleUsers, setCompatibleUsers }}
+    >
       <div className='dash-header'>Header</div>
       <div
         className='dash-items-container'

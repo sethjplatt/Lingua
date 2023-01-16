@@ -50,7 +50,7 @@ body {
   box-sizing: border-box;
 }
 
-input {
+/* input {
   background: rgb(255, 255, 255);
   align-self: center;
   width: 40%;
@@ -64,7 +64,7 @@ input {
   font-size: 1em;
   font-family: Calibri, 'Trebuchet MS', sans-serif;
   height: 40px;
-}
+} */
 
 .send-button {
   border-width: 0;
