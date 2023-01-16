@@ -36,31 +36,50 @@ export default function ConnectCard({ otherUser, activeUser }) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  function getFlagEmoji(countryCode) {
+    const codePoints = countryCode
+      .toUpperCase()
+      .split('')
+      .map((char) => 127397 + char.charCodeAt());
+    console.log(countryCode, codePoints);
+    return String.fromCodePoint(...codePoints);
+  }
+
   return (
-    <div
-      className='connect-card'
-      key={user?.userName}
-      style={{
-        height: `${randomIntFromInterval(200, 250)}px`,
-      }}
-    >
-      <div className='connect-item card-name'>
-        {user?.firstName + ' ' + user?.lastName}
-      </div>
-      <div className='connect-item connect-country'>
-        {user?.nativeLanguage?.toUpperCase()} ->{' '}
-        {user?.learnLanguage?.toUpperCase()}
-      </div>
-      <div className='connect-age'>{user?.info?.age}</div>
-      <div className='connect-country'>{user?.info?.country}</div>
-      <div className='connect-bio'>{user?.info?.bio}</div>
-      <button
-        className='connect-item start-chat'
-        value={otherUser}
-        onClick={() => handleStartAChatClick(otherUser)}
+    <div className='connect-card-wrapper'>
+      <div
+        className='connect-card'
+        key={user?.userName}
+        style={{
+          height: `${randomIntFromInterval(240, 270)}px`,
+        }}
       >
-        Start A Chat
-      </button>
+        <div className='connect-content'>
+          <div className='name-age'>
+            <div className=' connect-name connect-header'>
+              {user?.firstName}
+            </div>
+            <div className='connect-age connect-header'>{user?.info?.age}</div>
+          </div>
+          <div className='language-and-country'>
+            <div className='connect-language'>
+              {user?.nativeLanguage?.toUpperCase()} ->{' '}
+              {user?.learnLanguage?.toUpperCase()}
+            </div>
+            <div className='connect-country'>
+              {user?.info?.country ? getFlagEmoji(user.info.country) : null}
+            </div>
+          </div>
+          <div className='connect-bio'>{user?.info?.bio}</div>
+        </div>
+        <button
+          className='start-chat'
+          value={otherUser}
+          onClick={() => handleStartAChatClick(otherUser)}
+        >
+          Start A Chat
+        </button>
+      </div>
     </div>
   );
 }

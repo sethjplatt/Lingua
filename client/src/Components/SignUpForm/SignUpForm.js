@@ -16,7 +16,9 @@ export default function SignUpForm() {
       !data.get('firstName') ||
       !data.get('lastName') ||
       !data.get('username') ||
-      !data.get('password')
+      !data.get('password') ||
+      !data.get('nativeLanguage') ||
+      !data.get('learnLanguage')
     ) {
       setValid(false);
       console.log('invalid');

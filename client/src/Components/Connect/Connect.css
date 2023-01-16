@@ -3,7 +3,7 @@
   background: rgba(237, 221, 212, 0.8);
   height: auto;
   padding: 30px;
-  border: 2px solid rgb(219, 219, 219);
+  border: 3px solid rgba(237, 221, 212, 0.6);
   border-radius: 5px;
   flex-grow: 1;
 }
