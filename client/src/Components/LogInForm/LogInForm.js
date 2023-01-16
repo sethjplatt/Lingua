@@ -30,19 +30,21 @@ export default function LogInForm() {
     <div className='form-screen'>
       <div className='form-wrapper'>
         <h1>Please Log In</h1>
-        <form className='form' onSubmit={handleSubmit}>
-          <label>
-            <p>Username</p>
-            <input type='text' name='userName' autoComplete='email' />
-          </label>
-          <label>
-            <p>Password</p>
-            <input
-              type='password'
-              name='password'
-              autoComplete='current-password'
-            />
-          </label>
+        <form className='login-form' onSubmit={handleSubmit}>
+          <input
+            className='form-input'
+            placeholder='User Name'
+            type='text'
+            name='userName'
+            autoComplete='email'
+          />
+          <input
+            className='form-input'
+            placeholder='Password'
+            type='password'
+            name='password'
+            autoComplete='current-password'
+          />
           <div>
             <button className='submit' type='submit'>
               Submit

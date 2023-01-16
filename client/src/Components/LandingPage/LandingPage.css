@@ -1,12 +1,12 @@
 #landing-body {
   display: flex;
 }
-#landing-image {
+/* #landing-image {
   width: 880px;
   position: absolute;
   bottom: 0px;
   z-index: 1;
-}
+} */
 
 #left {
   display: flex;

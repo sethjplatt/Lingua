@@ -10,7 +10,12 @@ export default function LandingPage() {
 
   return (
     <LandingContext.Provider value={{ signUpOrLogin, setSignUpOrLogin }}>
-      <div id='landing-wrapper'>
+      <div
+        id='landing-wrapper'
+        style={{
+          backgroundImage: `url(/landmarks-dash.jpg)`,
+        }}
+      >
         <div className='header'>Lingua</div>
         <div id='landing-body'>
           <div id='left'>
@@ -19,7 +24,7 @@ export default function LandingPage() {
               <div id='landing-connect'>Connect</div>
               <div id='landing-learn'>Learn</div>
             </div>
-            <img id='landing-image' src='/landmarks-short.jpg'></img>
+            {/* <img id='landing-image' src='/landmarks-dash.jpg'></img> */}
           </div>
           <div id='form'>
             {signUpOrLogin == 'signUp' ? <SignUpForm /> : <LogInForm />}

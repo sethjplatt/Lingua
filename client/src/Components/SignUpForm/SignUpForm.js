@@ -48,23 +48,31 @@ export default function SignUpForm() {
       <div className='form-wrapper'>
         <h1>Create a Free Account</h1>
         <form className='form' onSubmit={handleSubmit}>
-          <label>
-            <p>First Name</p>
-            <input type='text' name='firstName' />
-          </label>
-          <label>
-            <p>Last Name</p>
-            <input type='text' name='lastName' />
-          </label>
-          <label>
-            <p>Username</p>
-            <input type='text' name='username' />
-          </label>
-          <label>
-            <p>Password</p>
-            <input type='password' name='password' />
-          </label>
-          <h5>Select your native language</h5>
+          <input
+            className='form-input'
+            type='text'
+            name='firstName'
+            placeholder='First Name'
+          />
+          <input
+            className='form-input'
+            type='text'
+            name='lastName'
+            placeholder='Last Name'
+          />
+          <input
+            className='form-input'
+            type='text'
+            name='username'
+            placeholder='User Name'
+          />
+          <input
+            className='form-input'
+            type='password'
+            name='password'
+            placeholder='Password'
+          />
+          <div className='form-label'>Select your native language</div>
           <select className='languages' name='nativeLanguage'>
             <option>Select Language</option>
             <option value='af'>Afrikaans</option>
@@ -186,7 +194,9 @@ export default function SignUpForm() {
             <option value='yo'>Yoruba - Èdè Yorùbá</option>
             <option value='zu'>Zulu - isiZulu</option>
           </select>
-          <h5>Select the language you would like to learn</h5>
+          <div className='form-label'>
+            Select the language you'd like to learn
+          </div>
           <select className='languages' name='learnLanguage'>
             <option>Select Language</option>
             <option value='af'>Afrikaans</option>

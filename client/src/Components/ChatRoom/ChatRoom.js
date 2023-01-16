@@ -81,9 +81,14 @@ export default function ChatRoom() {
   }
 
   return (
-    <div className='container'>
-      <div id='header'>
-        <div className='user-name'>{otherUser}</div>
+    <div
+      className='container'
+      style={{
+        backgroundImage: `url(/landmarks-dash.jpg)`,
+      }}
+    >
+      <div className='chat-header'>
+        <div>{otherUser}</div>
       </div>
       {translation ? (
         <div id='translation-banner'>Translation: {translation}</div>
@@ -95,20 +100,15 @@ export default function ChatRoom() {
           );
         })}
       </div>
-      <form className='form' onSubmit={sendMessage}>
-        <div className='input-container'>
-          <div className='input'>
-            <input
-              id='message-input'
-              type='text'
-              name='text'
-              className='input-box'
-              placeholder='Message'
-            />
-          </div>
-        </div>
-        <button className='submit' type='submit'>
-          Submit
+      <form className='input-container' onSubmit={sendMessage}>
+        <input
+          id='message-input'
+          type='text'
+          name='text'
+          placeholder='Message'
+        />
+        <button className='send' type='submit'>
+          Send
         </button>
       </form>
     </div>

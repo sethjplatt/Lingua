@@ -10,12 +10,13 @@
 }
 
 .them {
-  background: #dbebff;
   width: fit-content;
+  background-color: rgba(237, 221, 212, 0.5);
 }
 
 .me {
-  background: #a2cae6;
+  background: rgba(237, 221, 212);
+
   align-self: flex-end;
 }
 
