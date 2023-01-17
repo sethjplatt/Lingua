@@ -11,13 +11,17 @@
 
 .them {
   width: fit-content;
-  background-color: rgba(237, 221, 212, 0.5);
+  background-color: hsl(22, 41%, 95%);
+  display: flex;
+  flex-direction: column;
 }
 
 .me {
-  background: rgba(237, 221, 212);
-
+  background: hsl(22, 41%, 80%);
+  width: fit-content;
   align-self: flex-end;
+  display: flex;
+  flex-direction: column;
 }
 
 .message-time {
@@ -32,9 +36,20 @@
 
 .me .message-time {
   float: right;
+  padding: 5px;
 }
 
 .translation {
   border-top: 1px solid gray;
   padding: 5px;
+}
+
+.translate {
+  margin: 5px;
+  width: fit-content;
+  align-self: flex-end;
+}
+
+.send {
+  color: #772e25;
 }
