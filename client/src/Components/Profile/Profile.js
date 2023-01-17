@@ -2,6 +2,7 @@ import { UserContext } from '../../Context/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { setProfileInfo } from '../../Utils/UserService';
+import { getFlagEmoji } from '../../Utils/FlagEmoji';
 import './Profile.css';
 
 export default function Profile() {
@@ -328,7 +329,9 @@ export default function Profile() {
           </div>
 
           <div className='profile-country'>
-            {activeUser.info?.country ? activeUser.info.country : countryList()}
+            {activeUser.info?.country
+              ? getFlagEmoji(activeUser.info.country)
+              : countryList()}
           </div>
         </div>
         <div className='profile-bio'>
