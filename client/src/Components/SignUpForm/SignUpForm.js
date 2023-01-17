@@ -326,7 +326,7 @@ export default function SignUpForm() {
             </button>
           </div>
         </form>
-        <div className='notValid'>
+        <div className='invalid-notification'>
           {valid === false ? (
             <p>Please fill out all sections to create an account</p>
           ) : null}

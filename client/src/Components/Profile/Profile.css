@@ -20,7 +20,7 @@
 }
 
 .age-input {
-  width: 30px;
+  width: 40px;
 }
 
 .country-input {
@@ -29,4 +29,8 @@
 
 .bio-input {
   width: 230px;
+}
+
+#country-select {
+  width: 120px;
 }

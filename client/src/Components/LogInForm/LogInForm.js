@@ -6,10 +6,12 @@ import '../SignUpForm/Forms.css';
 
 export default function LogInForm() {
   const { signUpOrLogin, setSignUpOrLogin } = useContext(LandingContext);
+  const [valid, setValid] = useState('');
   const navigate = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();
+
     const data = new FormData(event.currentTarget);
     let user = {
       userName: data.get('userName'),
@@ -18,7 +20,10 @@ export default function LogInForm() {
     };
     const verifiedUser = await logInService(user);
     if (verifiedUser.ok) {
+      console.log(verifiedUser);
       navigate('/dashboard');
+    } else {
+      setValid('invalid');
     }
   }
 
@@ -51,6 +56,11 @@ export default function LogInForm() {
             </button>
           </div>
         </form>
+        {valid === 'invalid' ? (
+          <div className='invalid-notification'>
+            User Name or Password is Incorrect
+          </div>
+        ) : null}
         <div className='other-form'>
           <div>Dont have an account?</div>
           <button onClick={handleOtherClick}>Sign up</button>

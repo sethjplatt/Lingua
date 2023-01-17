@@ -18,7 +18,6 @@ export const logInService = async (user) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user),
   });
-
   return response;
 };
 
@@ -50,6 +49,17 @@ export const getUserByUserName = async (userName) => {
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(userName),
+  });
+  const jsonUser = await user.json();
+  return jsonUser;
+};
+
+export const setProfileInfo = async (info) => {
+  const user = await fetch(serverUrl + '/setprofile', {
+    method: 'POST',
+    credentials: 'include',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(info),
   });
   const jsonUser = await user.json();
   return jsonUser;

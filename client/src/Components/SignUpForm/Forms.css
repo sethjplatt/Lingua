@@ -12,6 +12,11 @@
   color: #283d3b;
 }
 
+.invalid-notification {
+  font-size: 20px;
+  margin: 10px;
+}
+
 .form-content {
   margin-top: 20px;
   display: flex;
@@ -19,8 +24,7 @@
   align-items: center;
   width: 350px;
   padding-left: 15px;
-  background-color: hsl(27, 32%, 82%);
-  border-radius: 30px;
+  border-bottom: 2px solid rgb(113, 113, 113);
 }
 
 .form-title {

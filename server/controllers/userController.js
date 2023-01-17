@@ -27,7 +27,6 @@ const signUp = async (req, res) => {
 const logIn = async (req, res) => {
   try {
     const response = await userModels.logIn(req.body);
-
     if (response) {
       const passwordMatch = await bcrypt.compare(
         req.body.password,
@@ -36,10 +35,9 @@ const logIn = async (req, res) => {
       if (passwordMatch) {
         req.session.sid = response.userName;
         res.sendStatus(200);
-      } else {
-        res.sendStatus(401);
       }
     }
+    res.sendStatus(401);
   } catch (err) {
     console.log(err);
   }
