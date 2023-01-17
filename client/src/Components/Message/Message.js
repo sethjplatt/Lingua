@@ -35,11 +35,12 @@ export const Message = ({ message, activeUser }) => {
       <div className='message-time'>{message.timestamp}</div>
       {translateOption && notYetTranslated ? (
         <button
+          className='translate'
           onClick={() => {
             handleTranslate(message.text);
           }}
         >
-          Translate
+          %
         </button>
       ) : null}
     </div>
