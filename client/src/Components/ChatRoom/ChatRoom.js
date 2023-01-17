@@ -1,14 +1,17 @@
 import io from 'socket.io-client';
-import { useEffect, useState } from 'react';
+import Peer from 'simple-peer';
+import { useEffect, useState, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { getActiveUser } from '../../Utils/UserService';
 import { joinRoom, saveMessageToDb } from '../../Utils/ChatService';
 import { detectLanguage, translate } from '../../Utils/TranslateService';
 import { v4 as uuidv4 } from 'uuid';
 import { Message } from '../Message/Message.js';
+import { useNavigate } from 'react-router-dom';
 import('./ChatRoom.css');
 
 export default function ChatRoom() {
+  const navigate = useNavigate();
   const { roomId, activeUserName } = useParams();
   const [inputText, setInputText] = useState('');
   const [messages, setMessages] = useState([]);
@@ -88,6 +91,14 @@ export default function ChatRoom() {
       }}
     >
       <div className='chat-header'>
+        <button
+          onClick={() => {
+            socket.emit('disconnect');
+            navigate('/dashboard');
+          }}
+        >
+          back
+        </button>
         <div>{otherUser}</div>
       </div>
       {translation ? (

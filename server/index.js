@@ -6,7 +6,11 @@ const app = express();
 const router = require('./router');
 const session = require('express-session');
 
-const corsConfig = { origin: 'http://localhost:3000', credentials: true };
+const corsConfig = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  methods: ['GET', 'POST'],
+};
 
 app.use(cors(corsConfig));
 app.use(express.json());
@@ -30,7 +34,7 @@ server.listen(port, () => {
 });
 
 io.on('connection', (socket) => {
-  console.log('A user connected');
+  console.log('A user connected, socket.id:', socket.id);
 
   socket.on('join', (room) => {
     console.log('a user joined:', room);
@@ -43,5 +47,17 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     console.log('A user disconnected');
+  });
+
+  socket.on('callUser', (data) => {
+    io.to(data.room).emit('callUser', {
+      signal: data.signalData,
+      from: data.from,
+      name: data.name,
+    });
+  });
+
+  socket.on('answerCall', (data) => {
+    io.to(data.room).emit('callAccepted', data.signal);
   });
 });
