@@ -66,7 +66,13 @@ export default function DashboardPage() {
 
   return (
     <UserContext.Provider
-      value={{ activeUser, myChats, compatibleUsers, setCompatibleUsers }}
+      value={{
+        activeUser,
+        setActiveUser,
+        myChats,
+        compatibleUsers,
+        setCompatibleUsers,
+      }}
     >
       <div className='header'>Lingua</div>
       <div

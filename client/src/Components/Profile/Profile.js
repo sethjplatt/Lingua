@@ -5,19 +5,21 @@ import { setProfileInfo } from '../../Utils/UserService';
 import './Profile.css';
 
 export default function Profile() {
-  const { activeUser } = useContext(UserContext);
+  const { activeUser, setActiveUser } = useContext(UserContext);
   const [age, setAge] = useState('');
   const [country, setCountry] = useState('');
   const [bio, setBio] = useState('');
   const navigate = useNavigate();
 
-  function handleClick() {
+  async function handleClick() {
     const info = {
       country,
       bio,
       age,
     };
-    setProfileInfo(info);
+    const updatedProfile = await setProfileInfo(info);
+    console.log('updatedProfile profile component:', updatedProfile);
+    setActiveUser(updatedProfile);
   }
 
   function handleAgeChange(event) {

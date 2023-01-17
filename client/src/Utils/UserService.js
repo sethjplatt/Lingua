@@ -55,12 +55,13 @@ export const getUserByUserName = async (userName) => {
 };
 
 export const setProfileInfo = async (info) => {
-  const user = await fetch(serverUrl + '/setprofile', {
+  const user = await fetch(serverUrl + '/setprofileinfo', {
     method: 'POST',
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(info),
   });
   const jsonUser = await user.json();
+  console.log(jsonUser);
   return jsonUser;
 };

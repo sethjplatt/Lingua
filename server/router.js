@@ -9,6 +9,7 @@ router.post('/login', userController.logIn);
 router.get('/connect', userController.getCompatibleUsers);
 router.get('/activeuser', userController.getActiveUser);
 router.post('/userbyusername', userController.getUserByUserName);
+router.post('/setprofileinfo', userController.setProfileInfo);
 
 router.get('/mychats', roomController.getMyChats);
 router.post('/rooms', roomController.joinRoom);

@@ -87,10 +87,22 @@ const getUserByUserName = async (req, res) => {
   }
 };
 
+const setProfileInfo = async (req, res) => {
+  try {
+    const userName = req.session.sid;
+    const info = req.body;
+    const updatedProfile = await userModels.setprofileinfo(userName, info);
+    res.status(201).send(updatedProfile);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 module.exports = {
   signUp,
   logIn,
   getCompatibleUsers,
   getActiveUser,
   getUserByUserName,
+  setProfileInfo,
 };

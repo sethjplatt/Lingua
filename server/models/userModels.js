@@ -1,3 +1,4 @@
+const { setProfileInfo } = require('../controllers/userController');
 const client = require('./index');
 const db = client.db('test').collection('users');
 
@@ -41,8 +42,26 @@ async function getCompatibleUsers(userName) {
 }
 
 async function getUserByUserName(userName) {
-  const user = await db.findOne({ userName: userName });
+  const user = await db.findOne(
+    { userName: userName },
+    { projection: { _id: 0, password: 0 } }
+  );
   return user;
+}
+
+async function setprofileinfo(userName, info) {
+  console.log('username:', userName, 'info', info);
+  const update = await db.findOneAndUpdate(
+    { userName: userName },
+    { $set: { info: info } }
+  );
+  if (update) {
+    const updatedProfile = await db.findOne(
+      { userName: userName },
+      { projection: { _id: 0, password: 0 } }
+    );
+    return updatedProfile;
+  }
 }
 
 module.exports = {
@@ -51,4 +70,5 @@ module.exports = {
   getCompatibleUsers,
   getActiveUser,
   getUserByUserName,
+  setprofileinfo,
 };
