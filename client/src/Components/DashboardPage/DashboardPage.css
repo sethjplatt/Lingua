@@ -11,6 +11,21 @@
 }
 
 .dash-header {
-  height: 60px;
   background-color: #772e25;
+  color: #f6f2e9;
+  font-weight: 700;
+  display: flex;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lingua {
+  margin: 0px 30px;
+  font-size: 44px;
+}
+
+.user {
+  margin: 0px 50px;
+  font-size: 25px;
 }

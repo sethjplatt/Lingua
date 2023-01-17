@@ -74,7 +74,10 @@ export default function DashboardPage() {
         setCompatibleUsers,
       }}
     >
-      <div className='header'>Lingua</div>
+      <div className='dash-header'>
+        <div className='lingua'>Lingua</div>
+        <div className='user'>Welcome Back, {activeUser?.firstName}!</div>
+      </div>
       <div
         className='dash-items-container'
         style={{
