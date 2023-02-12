@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="screenshots/Logo.JPG" height="150px" width="600px"/>
+  <img src="client/screenshots/Logo.JPG" height="150px" width="600px"/>
 </p>
 
 Lingua is a language learning application that aims to make the language learning process stress-free, fun, and exciting!
