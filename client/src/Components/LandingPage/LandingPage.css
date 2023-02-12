@@ -15,9 +15,9 @@
 }
 
 .slogan {
-  margin-top: 70px;
+  margin-top: 15px;
   /* align-self: center; */
-  padding-left: 180px;
+  padding-left: 130px;
   z-index: 10;
   font-size: 55px;
   font-weight: 900;
@@ -43,7 +43,29 @@
   background-color: #772e25;
   height: 75px;
   color: #f6f2e9;
+  display: flex;
+  justify-content: space-between;
   font-size: 50px;
   font-weight: 700;
-  padding-left: 30px;
+  padding: 0px 40px;
+  align-items: center;
+}
+
+.name-and-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icons {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  margin-top: 3px;
+  gap: 10px;
+}
+
+#logo {
+  margin-top: 10px;
 }

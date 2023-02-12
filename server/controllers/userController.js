@@ -35,9 +35,12 @@ const logIn = async (req, res) => {
       if (passwordMatch) {
         req.session.sid = response.userName;
         res.sendStatus(200);
+      } else {
+        res.sendStatus(401);
       }
+    } else {
+      res.sendStatus(401);
     }
-    res.sendStatus(401);
   } catch (err) {
     console.log(err);
   }

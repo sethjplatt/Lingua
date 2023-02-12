@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../Context/UserContext';
 import { useContext, useEffect, useState } from 'react';
 import { getUserByUserName } from '../../Utils/UserService';
+import { getFlagEmoji } from '../../Utils/FlagEmoji';
 import './ConnectCard.css';
 
 export default function ConnectCard({ otherUser, activeUser }) {
@@ -36,15 +37,6 @@ export default function ConnectCard({ otherUser, activeUser }) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
-  function getFlagEmoji(countryCode) {
-    const codePoints = countryCode
-      .toUpperCase()
-      .split('')
-      .map((char) => 127397 + char.charCodeAt());
-    console.log(countryCode, codePoints);
-    return String.fromCodePoint(...codePoints);
-  }
-
   return (
     <div className='connect-card-wrapper'>
       <div
@@ -66,9 +58,9 @@ export default function ConnectCard({ otherUser, activeUser }) {
               {user?.nativeLanguage?.toUpperCase()} ->{' '}
               {user?.learnLanguage?.toUpperCase()}
             </div>
-            <div className='connect-country'>
+            <span className='connect-country' role='img'>
               {user?.info?.country ? getFlagEmoji(user.info.country) : null}
-            </div>
+            </span>
           </div>
           <div className='connect-bio'>{user?.info?.bio}</div>
         </div>

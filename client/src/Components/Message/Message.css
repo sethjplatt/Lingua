@@ -9,6 +9,13 @@
   overflow-wrap: break-word;
 }
 
+.time-and-translate-icon {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .them {
   width: fit-content;
   background-color: hsl(22, 41%, 95%);
