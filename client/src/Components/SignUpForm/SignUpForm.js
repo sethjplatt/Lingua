@@ -35,7 +35,7 @@ export default function SignUpForm() {
       nativeLanguage: data.get('nativeLanguage'),
       learnLanguage: data.get('learnLanguage'),
     };
-    const response = signUpService(user);
+    const response = await signUpService(user);
     if (response) {
       navigate('/dashboard');
     }

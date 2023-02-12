@@ -1,11 +1,14 @@
 const MongoClient = require('mongodb').MongoClient;
+const bcrypt = require('bcryptjs');
+
+const mockPassword = bcrypt.hashSync('mock_Password*', 8);
 
 const mockUsers = [
   {
     firstName: 'Seth',
     lastName: 'Platt',
-    userName: 'sjp',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    userName: 'sethjplatt',
+    password: mockPassword,
     nativeLanguage: 'en',
     learnLanguage: 'es',
     info: {
@@ -15,10 +18,10 @@ const mockUsers = [
     },
   },
   {
-    firstName: 'William',
+    firstName: 'Will',
     lastName: 'Green',
     userName: 'will-green',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'en',
     learnLanguage: 'es',
     info: {
@@ -31,7 +34,7 @@ const mockUsers = [
     firstName: 'Emma',
     lastName: 'Jones',
     userName: 'EmmaJ',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'en',
     learnLanguage: 'es',
     info: {
@@ -41,10 +44,10 @@ const mockUsers = [
     },
   },
   {
-    firsName: 'Christopher',
+    firsName: 'Chris',
     lastName: 'Taylor',
     userName: '99Taylor',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'en',
     learnLanguage: 'es',
     info: {
@@ -54,10 +57,10 @@ const mockUsers = [
     },
   },
   {
-    firsName: 'Daniel',
+    firsName: 'Dan',
     lastName: 'Moore',
     userName: 'danMoore',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'en',
     learnLanguage: 'es',
     info: {
@@ -70,7 +73,7 @@ const mockUsers = [
     firsName: 'Paul',
     lastName: 'Anderson',
     userName: 'p-And1001',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'en',
     learnLanguage: 'es',
     info: {
@@ -83,7 +86,7 @@ const mockUsers = [
     firsName: 'Mark',
     lastName: 'Thomas',
     userName: 'markcthomas',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'en',
     learnLanguage: 'es',
     info: {
@@ -93,10 +96,10 @@ const mockUsers = [
     },
   },
   {
-    firstName: 'Michael',
+    firstName: 'Mike',
     lastName: 'Brown',
     userName: 'mikeyy',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'en',
     learnLanguage: 'es',
     info: {
@@ -109,7 +112,7 @@ const mockUsers = [
     firstName: 'Emily',
     lastName: 'Davis',
     userName: 'emDav32',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'en',
     learnLanguage: 'es',
     info: {
@@ -122,7 +125,7 @@ const mockUsers = [
     firstName: 'Jacob',
     lastName: 'Miller',
     userName: 'JacobiM',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'en',
     learnLanguage: 'es',
     info: {
@@ -132,10 +135,10 @@ const mockUsers = [
     },
   },
   {
-    firstName: 'Madison',
+    firstName: 'Madie',
     lastName: 'Wilson',
     userName: 'mads',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'en',
     learnLanguage: 'es',
     info: {
@@ -148,12 +151,12 @@ const mockUsers = [
     firstName: 'Juan',
     lastName: 'Garcia',
     userName: 'jgarc11',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
       country: 'ES',
-      bio: 'Hola, soy Juan y me encanta el fútbol y la música.',
+      bio: 'Vivo en España, me encanta el fútbol y la música.',
       age: '22',
     },
   },
@@ -161,7 +164,7 @@ const mockUsers = [
     firstName: 'Maria',
     lastName: 'Rodriguez',
     userName: 'Mrod',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
@@ -174,25 +177,25 @@ const mockUsers = [
     firstName: 'Diego',
     lastName: 'Martinez',
     userName: 'dmartinez',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
       country: 'CU',
-      bio: ' Hola, soy Diego y soy apasionado de la cocina y la gastronomía.',
+      bio: 'Soy apasionado de la cocina y la gastronomía. Quiero mejorar mi inglés',
       age: '24',
     },
   },
   {
-    firstName: 'Isabella',
+    firstName: 'Isa',
     lastName: 'Perez',
     userName: 'isaperez',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
       country: 'DO',
-      bio: 'Hola, soy Isabella y me gusta bailar y ir al cine.',
+      bio: 'Hola, soy de Republica Dominicana y me gusta bailar y ir al cine.',
       age: '30',
     },
   },
@@ -200,12 +203,12 @@ const mockUsers = [
     firstName: 'Sofia',
     lastName: 'Gonzalez',
     userName: 'Sofia_G',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
       country: 'CR',
-      bio: 'Hola! Me llamo Sofia y me encanta el arte y la cultura.',
+      bio: 'Me encanta el arte y la cultura. Charlemos',
       age: '19',
     },
   },
@@ -213,7 +216,7 @@ const mockUsers = [
     firstName: 'Lucas',
     lastName: 'Rodriguez',
     userName: 'Luca98',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
@@ -226,12 +229,12 @@ const mockUsers = [
     firstName: 'Mateo',
     lastName: 'Garcia',
     userName: 'mgarcia1',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
       country: 'CL',
-      bio: 'Hola, soy Mateo y me gusta el cine y la literatura.',
+      bio: 'Me llamo Mateo y me gusta el cine y la literatura.',
       age: '25',
     },
   },
@@ -239,12 +242,12 @@ const mockUsers = [
     firstName: 'Alicia',
     lastName: 'Martinez',
     userName: 'amartinez1',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
       country: 'ES',
-      bio: 'Hola! Me llamo Alicia y me encanta la moda y el diseño.',
+      bio: 'Me encanta la moda y el diseño. Soy de España.',
       age: '20',
     },
   },
@@ -252,7 +255,7 @@ const mockUsers = [
     firstName: 'Adriana',
     lastName: 'Lopez',
     userName: 'alopez1',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
@@ -262,10 +265,10 @@ const mockUsers = [
     },
   },
   {
-    firstName: 'Sebastian',
+    firstName: 'Seb',
     lastName: 'Gonzalez',
     userName: 'sgonzalez2',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
@@ -275,10 +278,10 @@ const mockUsers = [
     },
   },
   {
-    firstName: 'Valeria',
+    firstName: 'Val',
     lastName: 'Perez',
     userName: 'valP',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
@@ -288,10 +291,10 @@ const mockUsers = [
     },
   },
   {
-    firstName: 'Leonardo',
+    firstName: 'Leo',
     lastName: 'Sanchez',
     userName: 'lsanch_29',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
@@ -304,7 +307,7 @@ const mockUsers = [
     firstName: 'Ximena',
     lastName: 'Mendez',
     userName: 'xmendez1',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
@@ -317,7 +320,7 @@ const mockUsers = [
     firstName: 'Jose',
     lastName: 'Garcia',
     userName: 'joseee',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
@@ -330,7 +333,7 @@ const mockUsers = [
     firstName: 'Paula',
     lastName: 'Fernandez',
     userName: 'Paula39',
-    password: '$2a$08$XJgFz1RqIFH.PN6upXf/weCPX4yQq/c6Okz7IJxzliuY7q6B.Gaem',
+    password: mockPassword,
     nativeLanguage: 'es',
     learnLanguage: 'en',
     info: {
@@ -342,8 +345,7 @@ const mockUsers = [
 ];
 
 async function seedDB() {
-  const uri =
-    'mongodb+srv://sethjplatt:welcomE3917rio@lingua.spgqopr.mongodb.net/?retryWrites=true&w=majority';
+  const uri = process.env.DB_CONNECTION_STRING;
 
   const client = new MongoClient(uri, {
     useNewUrlParser: true,

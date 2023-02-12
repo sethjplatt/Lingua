@@ -302,6 +302,7 @@ export default function Profile() {
 
   return (
     <div className='profile-container'>
+      <div id='welcome-back'>Welcome Back, {activeUser.firstName}! 🤟</div>
       <div className='profile'>
         <div className='name-age profile-name-age'>
           <div className='card-name'>

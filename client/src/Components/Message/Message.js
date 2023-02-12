@@ -27,22 +27,25 @@ export const Message = ({ message, activeUser }) => {
   return (
     <div
       className={
-        message.author == activeUser.userName ? 'message me' : 'message them'
+        message.author === activeUser.userName ? 'message me' : 'message them'
       }
     >
       <div className='message-text'>{message.text}</div>
       {translation ? <div className='translation'>{translation}</div> : null}
-      <div className='message-time'>{message.timestamp}</div>
-      {translateOption && notYetTranslated ? (
-        <button
-          className='translate'
-          onClick={() => {
-            handleTranslate(message.text);
-          }}
-        >
-          %
-        </button>
-      ) : null}
+      <div className='time-and-translate-icon'>
+        <div className='message-time'>{message.timestamp}</div>
+        {translateOption && notYetTranslated ? (
+          <img
+            alt='translate'
+            src='/translation.png'
+            height={20}
+            width={20}
+            onClick={() => {
+              handleTranslate(message.text);
+            }}
+          />
+        ) : null}
+      </div>
     </div>
   );
 };
