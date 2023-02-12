@@ -25,14 +25,20 @@ export default function ChatCard({ chat }) {
   }
 
   if (chat.messages) {
+    const timestamp = chat.messages[chat.messages.length - 1].timestamp;
+    const hhmm = timestamp.match(/(\d?\d:\d{2})/);
+    const ddmmyyyy = timestamp.match(/\d?\d\/\d?\d\/\d{4}/);
+
+    console.log(hhmm);
     return (
       <div className='chat-card'>
         <div className='card-name'>{otherUser}</div>
         <div className='chat-card-last-chat'>
-          {chat.messages[chat.messages.length - 1].text}
+          {chat.messages[chat.messages.length - 1].text.slice(0, 15) + '...'}
         </div>
-        <div className='chat-card-last-chat-time'>
-          {chat.messages[chat.messages.length - 1].timestamp}
+        <div className='timestamp'>
+          <div id='hhmm'>{hhmm[0]}</div>
+          <div id='ddmmyyyy'>{ddmmyyyy[0]}</div>
         </div>
         <button
           className='continue-chat'
