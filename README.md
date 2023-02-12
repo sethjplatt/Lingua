@@ -7,7 +7,7 @@ Lingua is a language learning application that aims to make the language learnin
 ## Screenshots
 
 <p align="center">
-  <img src="client/screenshots/chatroom.JPG"/>
+  <img src="client/screenshots/chatroom.JPG" height='400px'/>
   <img src="client/screenshots/Dashboard.JPG" />
   <img src="client/screenshots/Landing.JPG"/>
 
