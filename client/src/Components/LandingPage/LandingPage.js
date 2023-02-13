@@ -63,7 +63,7 @@ export default function LandingPage() {
             {/* <img id='landing-image' src='/landmarks-dash.jpg'></img> */}
           </div>
           <div id='form'>
-            {signUpOrLogin == 'signUp' ? <SignUpForm /> : <LogInForm />}
+            {signUpOrLogin === 'signUp' ? <SignUpForm /> : <LogInForm />}
           </div>
         </div>
       </div>

@@ -37,27 +37,13 @@ io.on('connection', (socket) => {
   console.log('A user connected, socket.id:', socket.id);
 
   socket.on('join', (room) => {
-    console.log('a user joined:', room);
     socket.join(room.room);
   });
   socket.on('message', (data) => {
-    console.log('data object:', data);
     io.to(data.room).emit('message', data);
   });
 
   socket.on('disconnect', () => {
     console.log('A user disconnected');
-  });
-
-  socket.on('callUser', (data) => {
-    io.to(data.room).emit('callUser', {
-      signal: data.signalData,
-      from: data.from,
-      name: data.name,
-    });
-  });
-
-  socket.on('answerCall', (data) => {
-    io.to(data.room).emit('callAccepted', data.signal);
   });
 });

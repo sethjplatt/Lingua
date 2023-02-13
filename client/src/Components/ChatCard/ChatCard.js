@@ -10,14 +10,10 @@ export default function ChatCard({ chat }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    activeUser.userName == chat.activeUserName
+    activeUser.userName === chat.activeUserName
       ? setOtherUser(chat.otherUser)
       : setOtherUser(chat.activeUserName);
   }, []);
-
-  useEffect(() => {
-    console.log(otherUser);
-  }, [otherUser]);
 
   async function handleStartAChatClick(otherUser) {
     const sortedRoomId = [otherUser, activeUser.userName].sort().join('');
@@ -29,7 +25,6 @@ export default function ChatCard({ chat }) {
     const hhmm = timestamp.match(/(\d?\d:\d{2})/);
     const ddmmyyyy = timestamp.match(/\d?\d\/\d?\d\/\d{4}/);
 
-    console.log(hhmm);
     return (
       <div className='chat-card'>
         <div className='card-name'>{otherUser}</div>

@@ -5,7 +5,7 @@ import { logInService } from '../../Utils/UserService';
 import '../SignUpForm/Forms.css';
 
 export default function LogInForm() {
-  const { signUpOrLogin, setSignUpOrLogin } = useContext(LandingContext);
+  const { setSignUpOrLogin } = useContext(LandingContext);
   const [valid, setValid] = useState('');
   const navigate = useNavigate();
 

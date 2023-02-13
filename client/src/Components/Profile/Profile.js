@@ -1,5 +1,4 @@
 import { UserContext } from '../../Context/UserContext';
-import { useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { setProfileInfo } from '../../Utils/UserService';
 import { getFlagEmoji } from '../../Utils/FlagEmoji';
@@ -10,7 +9,6 @@ export default function Profile() {
   const [age, setAge] = useState('');
   const [country, setCountry] = useState('');
   const [bio, setBio] = useState('');
-  const navigate = useNavigate();
 
   async function handleClick() {
     const info = {

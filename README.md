@@ -50,7 +50,7 @@ To run this project on your machine, aside from the basics of git, npm, node, an
 5. Open another terminal window and cd into client:
 
    ```bash
-     npm start
+     npm run dev
    ```
 
 6. Create an account!

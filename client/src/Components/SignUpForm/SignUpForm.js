@@ -1,10 +1,10 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LandingContext } from '../../Context/LandingContext';
 import { signUpService } from '../../Utils/UserService';
 
 export default function SignUpForm() {
-  const { signUpOrLogin, setSignUpOrLogin } = useContext(LandingContext);
+  const { setSignUpOrLogin } = useContext(LandingContext);
   const [valid, setValid] = useState(null);
   const navigate = useNavigate();
 
@@ -21,7 +21,6 @@ export default function SignUpForm() {
       !data.get('learnLanguage')
     ) {
       setValid(false);
-      console.log('invalid');
       return;
     } else {
       setValid(true);

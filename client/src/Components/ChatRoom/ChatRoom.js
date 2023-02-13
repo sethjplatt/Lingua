@@ -1,10 +1,11 @@
 import io from 'socket.io-client';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getActiveUser } from '../../Utils/UserService';
 import { joinRoom, saveMessageToDb } from '../../Utils/ChatService';
 import { v4 as uuidv4 } from 'uuid';
 import { Message } from '../Message/Message.js';
+import { useNavigate } from 'react-router-dom';
 import('./ChatRoom.css');
 
 export default function ChatRoom() {
@@ -12,6 +13,8 @@ export default function ChatRoom() {
   const [messages, setMessages] = useState([]);
   const otherUser = roomId.replace(activeUserName, '');
   const [activeUser, setActiveUser] = useState({});
+
+  const navigate = useNavigate();
 
   const socket = io('http://localhost:3001');
 
@@ -77,6 +80,11 @@ export default function ChatRoom() {
     saveMessageToDb(data);
   }
 
+  function handleReturnHomeClick() {
+    socket.emit('leave', { room: roomId, activeUserName, otherUser });
+    navigate('/dashboard');
+  }
+
   return (
     <div
       className='container'
@@ -89,6 +97,9 @@ export default function ChatRoom() {
           alt='home'
           src='https://user-images.githubusercontent.com/108771602/218269984-cb9e4154-cd86-4ed1-9673-2ab6f91731bf.png'
           className='icons home'
+          onClick={() => {
+            handleReturnHomeClick();
+          }}
         />
         <div>{otherUser}</div>
         <svg

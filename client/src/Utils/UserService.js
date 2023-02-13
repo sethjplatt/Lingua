@@ -62,6 +62,5 @@ export const setProfileInfo = async (info) => {
     body: JSON.stringify(info),
   });
   const jsonUser = await user.json();
-  console.log(jsonUser);
   return jsonUser;
 };

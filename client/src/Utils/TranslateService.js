@@ -1,7 +1,7 @@
 const apiUrl = 'http://localhost:3001';
 
 export const detectLanguage = async (text) => {
-  const response = await fetch(`http://localhost:3001/detect`, {
+  const response = await fetch(`${apiUrl}/detect`, {
     method: 'POST',
     body: JSON.stringify({ text }),
     headers: {
@@ -14,7 +14,7 @@ export const detectLanguage = async (text) => {
 };
 
 export const translate = async (text, target) => {
-  const response = await fetch(`http://localhost:3001/translate`, {
+  const response = await fetch(`${apiUrl}/translate`, {
     method: 'POST',
     body: JSON.stringify({ text, target }),
     headers: {

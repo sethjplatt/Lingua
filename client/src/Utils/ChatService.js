@@ -8,9 +8,8 @@ export const joinRoom = async (roomData) => {
       'Content-Type': 'application/json',
     },
   });
-  if (response.status == 200) {
+  if (response.status === 200) {
     const json = await response.json();
-    console.log(json);
     return json;
   } else {
     return null;
